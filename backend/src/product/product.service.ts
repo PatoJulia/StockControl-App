@@ -16,11 +16,7 @@ export class ProductService {
   }
 
   findAll() {
-    //return this.productModel.find().exec();
-    const newProduct: Product = new this.productModel({
-      name: 'patovich',
-    });
-    return newProduct;
+    return this.productModel.find().exec();
   }
 
   findOne(id: number) {
