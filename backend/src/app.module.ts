@@ -3,6 +3,10 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ProductModule } from './product/product.module';
 import { MongooseModule } from '@nestjs/mongoose';
+import { ClientModule } from './client/client.module';
+import { BillModule } from './bill/bill.module';
+import { CurrencyModule } from './currency/currency.module';
+import { PriceModule } from './price/price.module';
 
 @Module({
   imports: [
@@ -10,6 +14,10 @@ import { MongooseModule } from '@nestjs/mongoose';
       'mongodb+srv://new-user:mXf8yQjEp9CSVPLh@cluster0.uhhw1c8.mongodb.net/stock-control?retryWrites=true&w=majority',
     ),
     ProductModule,
+    ClientModule,
+    BillModule,
+    CurrencyModule,
+    PriceModule,
   ],
   controllers: [AppController],
   providers: [AppService],
