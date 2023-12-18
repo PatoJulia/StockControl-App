@@ -1,7 +1,8 @@
 import HomeCard from "@/components/HomeCard";
 import Box from "@mui/material/Box";
-import  Grid from "@mui/material/Grid";
+import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
+import Link from "next/link";
 
 const NAMES = ["Facturacion", "Productos", "Clientes"];
 
