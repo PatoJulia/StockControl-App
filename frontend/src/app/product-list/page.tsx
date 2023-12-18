@@ -1,55 +1,92 @@
+"use client";
 import ProductCard from "@/components/ProductCard";
 import Currency from "@/interfaces/Currency";
 import Product from "@/interfaces/Product";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-
-const PRODUCTS: Product[] = [
-  {
-    name: "facu",
-    productCode: "facu",
-    brand: "facu",
-    stock: 5,
-    price: 300,
-    currency: Currency.USD,
-  },
-  {
-    name: "pato",
-    productCode: "pato",
-    brand: "pato",
-    stock: 50,
-    price: 450,
-    currency: Currency.USD,
-    imageUrl:
-      "https://img.freepik.com/foto-gratis/hoja-naturaleza-fondos-patron-ilustracion-planta-telon-fondo-diseno-abstracto-naturaleza-verde-vibrante-papel-tapiz-ilustracion-generativa-ai_188544-12680.jpg?w=1060&t=st=1702792509~exp=1702793109~hmac=ef7811c6a83b96b7127594913216ed783503c59f5573793cd42ae0047a350a61",
-  },
-  {
-    name: "push",
-    productCode: "push",
-    brand: "push",
-    stock: 8,
-    price: 100,
-    currency: Currency.USD,
-    imageUrl:
-      "https://img.freepik.com/foto-gratis/hoja-naturaleza-fondos-patron-ilustracion-planta-telon-fondo-diseno-abstracto-naturaleza-verde-vibrante-papel-tapiz-ilustracion-generativa-ai_188544-12680.jpg?w=1060&t=st=1702792509~exp=1702793109~hmac=ef7811c6a83b96b7127594913216ed783503c59f5573793cd42ae0047a350a61",
-  },
-];
+import { useEffect, useState, useTransition } from "react";
+import PRODUCTS from "./MOCK";
+import { table } from "console";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+} from "@mui/material";
+import Link from "next/link";
 
 export default function ProductList() {
+  const [tableView, setTableView] = useState<boolean>(false);
+
+  const toggleTableView = () => {
+    setTableView(!tableView);
+  };
+
   return (
     <>
-      <Typography>Productos</Typography>
-      <Button>arrow Left</Button>
-      <Button>ToggleView</Button>
-      <Button>Nuevo</Button>
-      <Button>Filter</Button>
-      <Grid container>
-        {PRODUCTS.map((product, index) => (
-          <Grid key={product.name} item xs={4}>
-            <ProductCard product={product} />
+      <Typography textAlign={"center"} fontWeight={"bold"} fontSize={"2rem"}>
+        Productos
+      </Typography>
+      <Grid container justifyContent={"space-evenly"} my={5}>
+        <Link href={"/home"}>
+          <Button style={{ color: "black", backgroundColor: "#AFC8AD" }}>
+            Arrow Left
+          </Button>
+        </Link>
+
+        <Button style={{ color: "black", backgroundColor: "#AFC8AD" }}>
+          Nuevo
+        </Button>
+        <Button
+          style={{ color: "black", backgroundColor: "#AFC8AD" }}
+          onClick={toggleTableView}
+        >
+          ToggleView
+        </Button>
+        <Button style={{ color: "black", backgroundColor: "#AFC8AD" }}>
+          Filter
+        </Button>
+      </Grid>
+      <Grid container width={"80%"} mx={"10%"} spacing={5}>
+        {tableView ? (
+          <Grid item xs={12}>
+            <Table>
+              <TableHead style={{ backgroundColor: "#88AB8E" }}>
+                <TableCell>ProductCode</TableCell>
+                <TableCell align="right">Name</TableCell>
+                <TableCell align="right">Price</TableCell>
+                <TableCell align="right">Brand</TableCell>
+                <TableCell align="right">Stock</TableCell>
+                <TableCell align="right">PDF LINK</TableCell>
+              </TableHead>
+              <TableBody style={{ backgroundColor: "#EEE7DA" }}>
+                {PRODUCTS.map((product, index) => (
+                  <TableRow
+                    key={product.name + "-" + index}
+                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                  >
+                    <TableCell component="th" scope="row">
+                      {product.productCode}
+                    </TableCell>
+                    <TableCell align="right">{product.name}</TableCell>
+                    <TableCell align="right">{product.price}</TableCell>
+                    <TableCell align="right">{product.brand}</TableCell>
+                    <TableCell align="right">{product.stock}</TableCell>
+                    <TableCell align="right">PDF LINK</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
           </Grid>
-        ))}
+        ) : (
+          PRODUCTS.map((product, index) => (
+            <Grid key={product.name + index} item xs={3}>
+              <ProductCard product={product} />
+            </Grid>
+          ))
+        )}
       </Grid>
     </>
   );
