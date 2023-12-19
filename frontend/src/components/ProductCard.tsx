@@ -1,5 +1,5 @@
 import Product from "@/interfaces/Product";
-import { Box, Button, Grid, TextField, Typography } from "@mui/material";
+import { Box, Button, Grid, Link, TextField, Typography } from "@mui/material";
 import Image from "next/image";
 
 interface Props {
@@ -26,7 +26,9 @@ export default function ProductCard(props: Props) {
               position={"relative"}
               my={"1rem"}
             >
-              <Image src={imageUrl ?? ""} alt={"Product image"} fill />
+              <Link href={`/product/${name}`}>
+                <Image src={imageUrl ?? ""} alt={"Product image"} fill />
+              </Link>
             </Box>
           </Grid>
         )}
@@ -40,7 +42,7 @@ export default function ProductCard(props: Props) {
             <Typography fontSize={".8rem"}>Stock: {stock}</Typography>
           </Grid>
 
-          <input style={{ width: "3rem" }} type="number"></input>
+          <input style={{ width: "3rem" }} type="number" min={0}></input>
           <Button
             style={{
               width: "3rem",
