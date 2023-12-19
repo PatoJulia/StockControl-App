@@ -9,6 +9,7 @@ import { useEffect, useState, useTransition } from "react";
 import PRODUCTS from "./MOCK";
 import { table } from "console";
 import {
+  Box,
   Table,
   TableBody,
   TableCell,
@@ -59,7 +60,7 @@ export default function ProductList() {
                 <TableCell align="right">Price</TableCell>
                 <TableCell align="right">Brand</TableCell>
                 <TableCell align="right">Stock</TableCell>
-                <TableCell align="right">PDF LINK</TableCell>
+                <TableCell align="right">Ultima factura</TableCell>
               </TableHead>
               <TableBody style={{ backgroundColor: "#EEE7DA" }}>
                 {PRODUCTS.map((product, index) => (
@@ -74,7 +75,11 @@ export default function ProductList() {
                     <TableCell align="right">{product.price}</TableCell>
                     <TableCell align="right">{product.brand}</TableCell>
                     <TableCell align="right">{product.stock}</TableCell>
-                    <TableCell align="right">PDF LINK</TableCell>
+                    <Box display={"flex"} justifyContent={"center"}>
+                      <Link href={"/bill"}>
+                        <TableCell align="left">Bill link</TableCell>
+                      </Link>
+                    </Box>
                   </TableRow>
                 ))}
               </TableBody>
