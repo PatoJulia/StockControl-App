@@ -1,0 +1,1 @@
+GET http://localhost:4300/bill/a/pdf HTTP/1.1
