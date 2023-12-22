@@ -25,7 +25,7 @@ export class BillService {
     return `This action removes a #${id} bill`;
   }
 
-  async generatePdf(): Promise<Buffer> {
+  async generatePdf(id: string): Promise<Buffer> {
     const pdfBuffer: Buffer = await new Promise((resolve) => {
       const doc = new PDFDocument({
         size: 'A4',
@@ -34,7 +34,7 @@ export class BillService {
 
       doc.text('PDF generated in the server');
       doc.moveDown();
-      doc.text('this is an example text');
+      doc.text('this is an example text for a bill with id: ' + id);
       doc.text(
         "To continue let's follow https://www.youtube.com/watch?v=gdSw3clMZ0E",
       );

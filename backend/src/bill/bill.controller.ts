@@ -43,7 +43,7 @@ export class BillController {
 
   @Get(':id/pdf')
   async getPdf(@Param('id') id: string, @Res() res): Promise<void> {
-    const buffer = await this.billService.generatePdf();
+    const buffer = await this.billService.generatePdf(id);
 
     res.set({
       'Content-Type': 'application/pdf',
