@@ -10,6 +10,9 @@ import PRODUCTS from "./MOCK";
 import { table } from "console";
 import {
   Box,
+  Dialog,
+  DialogContent,
+  DialogTitle,
   Table,
   TableBody,
   TableCell,
@@ -17,13 +20,43 @@ import {
   TableRow,
 } from "@mui/material";
 import Link from "next/link";
+import { get } from "http";
+import ProductModal from "@/components/ProductModal";
 
 export default function ProductList() {
   const [tableView, setTableView] = useState<boolean>(false);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   const toggleTableView = () => {
     setTableView(!tableView);
   };
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  useEffect(() => {
+    console.log(isModalOpen);
+  }, [isModalOpen]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch("http://localhost:4300/product");
+        const data = await response.json();
+        setProducts(data);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+
+    fetchProducts();
+  }, []);
 
   return (
     <>
@@ -37,7 +70,10 @@ export default function ProductList() {
           </Button>
         </Link>
 
-        <Button style={{ color: "black", backgroundColor: "#AFC8AD" }}>
+        <Button
+          style={{ color: "black", backgroundColor: "#AFC8AD" }}
+          onClick={handleOpenModal}
+        >
           Nuevo
         </Button>
         <Button
@@ -63,7 +99,7 @@ export default function ProductList() {
                 <TableCell align="right">Ultima factura</TableCell>
               </TableHead>
               <TableBody style={{ backgroundColor: "#EEE7DA" }}>
-                {PRODUCTS.map((product, index) => (
+                {products?.map((product, index) => (
                   <TableRow
                     key={product.name + "-" + index}
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -86,13 +122,18 @@ export default function ProductList() {
             </Table>
           </Grid>
         ) : (
-          PRODUCTS.map((product, index) => (
+          products.map((product, index) => (
             <Grid key={product.name + index} item xs={3}>
               <ProductCard product={product} />
             </Grid>
           ))
         )}
       </Grid>
+
+      <ProductModal
+        closeCallback={handleCloseModal}
+        isModalOpen={isModalOpen}
+      />
     </>
   );
 }

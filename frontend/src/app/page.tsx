@@ -1,5 +1,7 @@
 "use client";
+import GoogleLoginButton from "@/components/GoogleLoginButton";
 import { Box, Button, Grid, Input, Typography } from "@mui/material";
+import { useEffect } from "react";
 
 export default function LoginPage() {
   const handleRedirectToHome = () => {
@@ -32,6 +34,7 @@ export default function LoginPage() {
         <Button sx={{ marginTop: 4 }} onClick={handleRedirectToHome}>
           Iniciar sesión
         </Button>
+        <GoogleLoginButton />
       </Grid>
     </Box>
   );
