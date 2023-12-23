@@ -19,6 +19,6 @@ import { GoogleStrategy } from './google.strategy';
     CurrencyModule,
   ],
   controllers: [AppController],
-  providers: [AppService, GoogleStrategy],
+  providers: [AppService],
 })
 export class AppModule {}

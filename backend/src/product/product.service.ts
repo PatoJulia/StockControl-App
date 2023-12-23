@@ -16,18 +16,26 @@ export class ProductService {
   }
 
   findAll() {
-    return this.productModel.find().exec();
+    return this.productModel.find().populate('currency').exec();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} product`;
+  findOne(id: string) {
+    return this.productModel.findById(id).exec();
   }
 
   update(id: number, updateProductDto: UpdateProductDto) {
-    return `This action updates a #${id} product`;
+    return this.productModel
+      .findByIdAndUpdate(id, updateProductDto, { new: true })
+      .exec();
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} product`;
+  updateStock(id: string, newStock: number) {
+    return this.productModel
+      .findByIdAndUpdate(id, { stock: newStock }, { new: true })
+      .exec();
+  }
+
+  remove(id: string) {
+    return this.productModel.findByIdAndDelete(id).exec();
   }
 }
