@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import Button from "@mui/material/Button";
 
 const GoogleLoginButton = () => {
   const handleGoogleLogin = async () => {
@@ -14,7 +15,7 @@ const GoogleLoginButton = () => {
     }
   };
 
-  return <button onClick={handleGoogleLogin}>Login with Google</button>;
+  return <button   style={{backgroundColor: "rgb(210,210,210)",color:"black", padding: 10, borderRadius: "19px"}} onClick={handleGoogleLogin}>Login with Google</button>;
 };
 
 export default GoogleLoginButton;

@@ -8,11 +8,11 @@ interface Props {
 
 export default function ProductCard(props: Props) {
   const { name, price, brand, imageUrl, stock } = props.product;
-
+  const pato = false;
   return (
     <>
       <Grid style={{ border: "1px solid black" }} container>
-        {imageUrl && (
+        {(
           <Grid
             item
             xs={12}
@@ -27,7 +27,7 @@ export default function ProductCard(props: Props) {
               my={"1rem"}
             >
               <Link href={`/product/${name}`}>
-                <Image src={imageUrl ?? ""} alt={"Product image"} fill />
+                <Image src={"https://definicion.de/wp-content/uploads/2009/06/producto.png"} alt={"Product image"} fill />
               </Link>
             </Box>
           </Grid>

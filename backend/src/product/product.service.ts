@@ -25,6 +25,10 @@ export class ProductService {
     return this.productModel.findById(id).exec();
   }
 
+  findOneByName(name: string) {
+    return this.productModel.findOne({ name: name }).exec();
+  }
+
   update(id: string, updateProductDto: CreateProductDto) {
     return this.productModel
       .findByIdAndUpdate(id, updateProductDto, { new: true })

@@ -27,13 +27,6 @@ export default function LoginPage() {
         >
           STOCK CONTROL APP
         </Typography>
-        <Typography>Nombre de Usuario</Typography>
-        <Input></Input>
-        <Typography>Contraseña</Typography>
-        <Input></Input>
-        <Button sx={{ marginTop: 4 }} onClick={handleRedirectToHome}>
-          Iniciar sesión
-        </Button>
         <GoogleLoginButton />
       </Grid>
     </Box>

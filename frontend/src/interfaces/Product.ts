@@ -4,9 +4,8 @@ export default interface Product {
   name: string;
   imageUrl?: string;
   productCode: string;
-  decription?: string;
+  description?: string;
   brand: string;
   stock: number;
   price: number;
-  currency: Currency;
 }
