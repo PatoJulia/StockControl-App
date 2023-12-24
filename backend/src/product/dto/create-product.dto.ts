@@ -1,5 +1,4 @@
-import { IsInt, IsNumber, IsPositive, IsString, Min } from 'class-validator';
-import { Currency } from 'src/currency/schema/currency.schema';
+import { IsInt, IsNumber, IsString, Min } from 'class-validator';
 export class CreateProductDto {
   @IsString()
   name: string;
@@ -24,5 +23,6 @@ export class CreateProductDto {
   @IsNumber()
   price: number;
 
-  currencyId: Currency;
+  @IsString()
+  currencyId: string | null;
 }

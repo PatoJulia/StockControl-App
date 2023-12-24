@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto';
-import { UpdateProductDto } from './dto/update-product.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Product } from './schema/product.schema';
@@ -11,8 +10,11 @@ export class ProductService {
     @InjectModel(Product.name) private productModel: Model<Product>,
   ) {}
   create(createProductDto: CreateProductDto) {
-    const newProduct = new this.productModel(createProductDto);
-    return newProduct.save();
+    const createdProduct = this.productModel.create({
+      ...createProductDto,
+      currency: createProductDto.currencyId,
+    });
+    return createdProduct.then((doc) => doc.populate(['currency']));
   }
 
   findAll() {
@@ -23,7 +25,7 @@ export class ProductService {
     return this.productModel.findById(id).exec();
   }
 
-  update(id: number, updateProductDto: UpdateProductDto) {
+  update(id: string, updateProductDto: CreateProductDto) {
     return this.productModel
       .findByIdAndUpdate(id, updateProductDto, { new: true })
       .exec();

@@ -11,6 +11,8 @@ export class Currency {
 
   @Prop()
   symbol: string;
+
+  // TO DO: We won't use Country as a Prop, update the drawio
 }
 
 export const CurrencySchema = SchemaFactory.createForClass(Currency);

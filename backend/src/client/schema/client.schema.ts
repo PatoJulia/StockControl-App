@@ -10,13 +10,13 @@ export class Client {
   name: string;
 
   @Prop()
-  clientNumber: string;
+  clientNumber: number;
 
   @Prop()
   address: string;
 
   @Prop()
-  phoneNumber: string;
+  phoneNumber: number;
 
   @Prop()
   email: string;

@@ -13,10 +13,10 @@ export class Bill {
   description: string;
 
   @Prop()
-  discount: string;
+  discount: number;
 
   @Prop()
-  total: string;
+  total: number;
 
   @Prop()
   dateOfIssue: Date;
@@ -27,7 +27,7 @@ export class Bill {
   @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Client' })
   client: Client;
 
-  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Product' })
+  @Prop({ type: mongoose.Schema.Types.Array, ref: 'Product' })
   productList: Product[];
 }
 
