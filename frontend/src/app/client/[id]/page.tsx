@@ -28,7 +28,7 @@ export default function ClientDetail({ params }: { params: {id: string}}){
     const handleSendRequest = async (data: FormValues) => {
       try {
         const response = await fetch(
-          `http://localHost:4300/client/`,
+          `http://localHost:4300/client/${Client?._id}`,
           {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
