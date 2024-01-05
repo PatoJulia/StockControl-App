@@ -60,30 +60,35 @@ export default function ProductList() {
 
   return (
     <>
+       <Box
+        sx={{
+          background: "linear-gradient(to bottom, #ffffff, #ffffff)",          padding: "20px", // Ajusta el espaciado interno según sea necesario
+        }}
+      >
       <Typography textAlign={"center"} fontWeight={"bold"} fontSize={"2rem"}>
         Productos
       </Typography>
       <Grid container justifyContent={"space-evenly"} my={5}>
         <Link href={"/home"}>
-          <Button style={{ color: "black", backgroundColor: "#AFC8AD" }}>
-            Arrow Left
+          <Button style={{ color: "black", fontSize: "1.4rem" }}>
+            Inicio
           </Button>
         </Link>
 
         <Button
-          style={{ color: "black", backgroundColor: "#AFC8AD" }}
+          style={{ color: "black", fontSize: "1.4rem" }}
           onClick={handleOpenModal}
         >
-          Nuevo
+          Nuevo producto
         </Button>
         <Button
-          style={{ color: "black", backgroundColor: "#AFC8AD" }}
+         style={{ color: "black", fontSize: "1.4rem" }}
           onClick={toggleTableView}
         >
-          ToggleView
+        Lista de Productos
         </Button>
-        <Button style={{ color: "black", backgroundColor: "#AFC8AD" }}>
-          Filter
+        <Button style={{ color: "black", fontSize: "1.4rem" }}>
+          Filtro
         </Button>
       </Grid>
       <Grid container width={"80%"} mx={"10%"} spacing={5}>
@@ -134,6 +139,7 @@ export default function ProductList() {
         closeCallback={handleCloseModal}
         isModalOpen={isModalOpen}
       />
+      </Box>
     </>
   );
 }

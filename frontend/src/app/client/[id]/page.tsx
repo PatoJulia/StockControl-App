@@ -70,31 +70,70 @@ export default function ClientDetail({ params }: { params: { id: string } }) {
   };
   return (
     <>
-      <Box>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <Grid container>
-            <Grid item xs={12}>
-              <Typography>{`codigo`}</Typography>
-              <input type="text" {...register("_id")} />
-            </Grid>
-            <Grid item xs={12}>
-              <Typography>{"Nombre"}</Typography>
-              <input type="text" {...register("name")} />
-            </Grid>
-            <Grid item xs={12}>
-              <Typography>{"Direccion"}</Typography>
-              <input type="text" {...register("addres")} />
-            </Grid>
-            <Grid item xs={12}>
-              <Typography>{"telefono"}</Typography>
-              <input type="number" {...register("phone")} />
-            </Grid>
-            <Typography>{"Email"}</Typography>
-            <Grid item xs={12}>
-              <input type="text" {...register("e_mail")} />
-            </Grid>
-            <input type="submit" />
-          </Grid>
+      <Box     
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        height={"100vh"}
+        width={"100vw"}
+        sx={{
+        background: "linear-gradient(to bottom, #d0f0f0, #e9e9ef)",
+        }}>
+        <form onSubmit={handleSubmit(onSubmit)} style={{display:"flex", justifyContent:"center", flexDirection:"column" }} >
+        <Box mb={4}>
+            <Typography variant="h4" gutterBottom sx={{ fontSize: "2rem", textAlign:"center"}}>
+              Nuevo cliente
+            </Typography>
+          </Box>
+            <Box sx={{marginY: 3}}>
+              <Typography sx={{ fontSize: "1.5rem" }}>{`Código`}</Typography>
+              <input
+                type="text"
+                {...register("_id")}
+                style={{ fontSize: "1.2rem", padding: "0.5rem" }}
+              />
+            </Box>
+            <Box sx={{marginY: 3}}>
+              <Typography sx={{ fontSize: "1.5rem" }}>{"Nombre"}</Typography>
+              <input
+                type="text"
+                {...register("name")}
+                style={{ fontSize: "1.2rem", padding: "0.5rem" }}
+              />
+            </Box>
+            <Box sx={{marginY: 3}}>
+              <Typography sx={{ fontSize: "1.5rem" }}>{"Dirección"}</Typography>
+              <input
+                type="text"
+                {...register("addres")}
+                style={{ fontSize: "1.2rem", padding: "0.5rem" }}
+              />
+            </Box>
+            <Box sx={{marginY: 3}}>
+              <Typography sx={{ fontSize: "1.5rem" }}>{"Teléfono"}</Typography>
+              <input
+                type="number"
+                {...register("phone")}
+                style={{ fontSize: "1.2rem", padding: "0.5rem" }}
+              />
+            </Box>
+            <Box sx={{marginY: 3}}>
+              <Typography sx={{ fontSize: "1.5rem" }}>{"Email"}</Typography>
+              <input
+                type="text"
+                {...register("e_mail")}
+                style={{ fontSize: "1.2rem", padding: "0.5rem" }}
+              />
+            </Box>
+            <Box sx={{display:"flex", marginY: 3, justifyContent:"center"}}>
+            <input type="submit"  style={{
+                fontSize: "1.5rem",
+                padding: "0.5rem",
+                borderRadius: "10px",
+                border:"1px solid black",
+                textAlign:"center"
+              }} />
+          </Box>
         </form>
       </Box>
     </>

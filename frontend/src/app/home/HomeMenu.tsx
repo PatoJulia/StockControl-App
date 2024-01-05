@@ -34,11 +34,21 @@ const MOCK_PRODUCTS = [
 
 export default function HomeMenu() {
   return (
-    <Box sx={{ marginTop: 2.5 }}>
-      <Box display={"flex"} justifyContent={"center"}>
+    <Box 
+      sx={{
+        marginTop: 2.5,
+        background: "linear-gradient(to bottom, #f0f0f0, #909090)",    
+        minHeight: "100vh",
+        padding: "20px",
+      }}
+    >
+
+    <Box sx={{ marginTop: 2.5 } }>
+      <Box display={"flex"} justifyContent={"center"} >
         <Typography variant="h4">Control de Stock</Typography>
       </Box>
-      <Grid container height={"50vh"} px={10} mt={5}>
+      
+      <Grid container height={"50vh"} px={10} mt={5} display ={"flex"} justifyContent={"center"}>
         {MOCK_PRODUCTS.map((product) => (
           <Grid key={product.name} item xs={3} height={"100%"}>
             <Box sx={{ border: "1px solid black" }} height={"100%"}>
@@ -71,5 +81,6 @@ export default function HomeMenu() {
         </Grid>
       </Grid>
     </Box>
+  </Box>
   );
 }
