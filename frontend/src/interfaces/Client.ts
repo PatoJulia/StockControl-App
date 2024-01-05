@@ -1,8 +1,7 @@
-
 export default interface Client {
-    _id: string;
-    name: string;
-    addres: string;
-    phone: number;
-    e_mail: string;
+  _id: string;
+  name: string;
+  address?: string;
+  phone?: number;
+  email?: string;
 }

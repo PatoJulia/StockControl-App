@@ -16,7 +16,7 @@ interface FormValues {
   price: number;
 }
 
-export default function ProductDetail() {
+export default function NewProductDetail() {
   const [product, setProduct] = useState<Product>();
   const ref = useRef();
   const { register, handleSubmit } = useForm<FormValues>();

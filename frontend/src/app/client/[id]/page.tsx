@@ -1,15 +1,15 @@
+"use client";
+import Client from "@/interfaces/Client";
 import Currency from "@/interfaces/Currency";
 import Product from "@/interfaces/Product";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-import { Client } from 'src/client/schema/client.schema';
-
 
 import { useEffect, useRef, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 
-interface FormValues{
+interface FormValues {
   _id: string;
   name: string;
   addres: string;
@@ -17,59 +17,59 @@ interface FormValues{
   e_mail: string;
 }
 
-export default function ClientDetail({ params }: { params: {id: string}}){
-    const ref = useRef();
-    const [Client, setClient] = useState<Client>();
-    const { register, handleSubmit } = useForm<FormValues>();
-    const [isEditMode, setIsEditMode] = useState<boolean>(false);
+export default function ClientDetail({ params }: { params: { id: string } }) {
+  const ref = useRef();
+  const [client, setClient] = useState<Client>();
+  const { register, handleSubmit } = useForm<FormValues>();
+  const [isEditMode, setIsEditMode] = useState<boolean>(false);
 
-    const onSubmit: SubmitHandler<FormValues> = (data) => handleSendRequest(data);
-    
-    const handleSendRequest = async (data: FormValues) => {
+  const onSubmit: SubmitHandler<FormValues> = (data) => handleSendRequest(data);
+
+  const handleSendRequest = async (data: FormValues) => {
+    try {
+      const response = await fetch(
+        `http://localHost:4300/client/${client?._id}`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        }
+      );
+    } catch (error) {
+      console.error("Error fetching Client:", error);
+    }
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
       try {
         const response = await fetch(
-          `http://localHost:4300/client/${Client?._id}`,
+          `http://localhost:4300/client/${params.id}`,
           {
-            method: "PUT",
+            method: "GET",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(data),
           }
-        );        
-      }catch (error){
-        console.error("Error fetching Client:", error);
-      }
-    };
-
-    useEffect(() => {
-      const fetchData = async () => {
-        try {
-          const response = await fetch(
-            `http://localhost:4300/client/${params.id}`,
-            {
-              method: "GET",
-              headers: { "Content-Type": "application/json" },
-            }
-          );
-          if(!response.ok){
-            throw new Error("Network response was not ok.");
-          }
-          const data: Product = await response.json();
-          setClient(data);
-        }catch (error){
-        console.log("Error fetching Client:", error);
+        );
+        if (!response.ok) {
+          throw new Error("Network response was not ok.");
         }
-      };
-
-      if(params.id){
-        fetchData();
+        const data: Client = await response.json();
+        setClient(data);
+      } catch (error) {
+        console.log("Error fetching Client:", error);
       }
-    }, [params.id]);
-
-    const toggleEditMode = () => {
-      setIsEditMode(!isEditMode);
     };
-    return(
-        <>
+
+    if (params.id) {
+      fetchData();
+    }
+  }, [params.id]);
+
+  const toggleEditMode = () => {
+    setIsEditMode(!isEditMode);
+  };
+  return (
+    <>
       <Box>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Grid container>
@@ -93,10 +93,10 @@ export default function ClientDetail({ params }: { params: {id: string}}){
             <Grid item xs={12}>
               <input type="text" {...register("e_mail")} />
             </Grid>
-          <input type="submit" />
-        </Grid>
+            <input type="submit" />
+          </Grid>
         </form>
       </Box>
-        </>
-    );
+    </>
+  );
 }
