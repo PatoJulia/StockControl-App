@@ -1,21 +1,35 @@
+"use client";
 import React from "react";
-import axios from "axios";
-import Button from "@mui/material/Button";
+
+import { signIn, signOut, useSession } from "next-auth/react";
 
 const GoogleLoginButton = () => {
-  const handleGoogleLogin = async () => {
-    try {
-      // Make a request to the backend to initiate Google authentication
-      const response = await axios.get("http://localhost:4300");
+  const { data: session } = useSession();
 
-      // Redirect the user to the Google authentication page
-      window.location.href = response.data.url;
-    } catch (error) {
-      console.error("Error initiating Google login:", error);
-    }
-  };
+  if (session && session.user) {
+    return (
+      <div className="flex gap-4 ml-auto">
+        <p className="text-sky-600">{session.user.name}</p>
+        <button onClick={() => signOut()} className="text-red-600">
+          Sign Out
+        </button>
+      </div>
+    );
+  }
 
-  return <button   style={{backgroundColor: "rgb(210,210,210)",color:"black", padding: 10, borderRadius: "19px"}} onClick={handleGoogleLogin}>Login with Google</button>;
+  return (
+    <button
+      style={{
+        backgroundColor: "rgb(210,210,210)",
+        color: "black",
+        padding: 10,
+        borderRadius: "19px",
+      }}
+      onClick={() => signIn()}
+    >
+      Login with Google
+    </button>
+  );
 };
 
 export default GoogleLoginButton;
