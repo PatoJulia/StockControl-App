@@ -3,9 +3,6 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Providers from "@/components/Providers";
 import Appbar from "@/components/Appbar";
-import { useSession } from "next-auth/react";
-import { getServerSideProps } from "next/dist/build/templates/pages";
-import MyApp from "@/pages/_app";
 import AuthComponent from "@/components/AuthComponent";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -24,7 +21,6 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Providers>
-          <Appbar />
           <AuthComponent Component={children} />
         </Providers>
       </body>
