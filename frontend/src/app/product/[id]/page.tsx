@@ -1,6 +1,7 @@
 "use client";
 import Product from "@/interfaces/Product";
 import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Link from "next/link";
@@ -73,69 +74,87 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
 
   return (
     <>
-      {product && product.name ? (
-        <Box>
-          <button onClick={toggleEditMode}>Toggle edit</button>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <Grid container>
-              <Grid item xs={12}>
-                <Typography>{`Name`}</Typography>
-                <input
+      {product && product.name ? (      
+        <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          height={"100vh"}
+          width={"100vw"}
+          sx={{
+          background: "linear-gradient(to bottom, #d0f0f0, #e9e9ef)",
+          }}>
+          
+          <form onSubmit={handleSubmit(onSubmit)} style={{display:"flex", justifyContent:"center", flexDirection:"column" }}>
+            <Box mb={4}>
+              <Typography variant="h4" gutterBottom sx={{ fontSize: "2rem", textAlign:"center", fontFamily:"fantasy", fontStyle:"italic"}}>
+              Nueva Factura
+              </Typography>
+
+            </Box>
+            <Box sx={{marginY: 2}}>  
+              <button onClick={toggleEditMode} >Editar</button>          
+              <Typography sx={{ fontSize: "1.5rem", fontFamily:"fantasy" }}>{`Nombre`}</Typography>
+              <input
                   defaultValue={product.name}
                   type="text"
                   disabled={!isEditMode}
+                  style={{ fontSize: "1.2rem", padding: "0.5rem" }}
                   {...register("name")}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <Typography>{"Product Code"}</Typography>
-                <input
-                  defaultValue={product.productCode}
-                  type="text"
-                  disabled={!isEditMode}
-                  {...register("productCode")}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <Typography>{"description: "}</Typography>
+              />             
+              </Box>
+             
+              <Box sx={{marginY: 2}}>             
+                <Typography sx={{ fontSize: "1.5rem", fontFamily:"fantasy" }}>{"Descripcion"}</Typography>
                 <input
                   defaultValue={product.description}
                   type="text"
                   disabled={!isEditMode}
+                  style={{ fontSize: "1.2rem", padding: "0.5rem" }}
                   {...register("description")}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <Typography>{"brand: "}</Typography>
+                />            
+              </Box>
+              <Box sx={{marginY: 2}}>              
+                <Typography sx={{ fontSize: "1.5rem", fontFamily:"fantasy" }}>{"Marca"}</Typography>
                 <input
                   defaultValue={product.brand}
                   type="text"
                   disabled={!isEditMode}
+                  style={{ fontSize: "1.2rem", padding: "0.5rem" }}
                   {...register("brand")}
-                />
-              </Grid>
-              <Typography>{"stock: "}</Typography>
-              <Grid item xs={12}>
+                />             
+              </Box>
+              <Box sx={{marginY: 2}}>
+                <Typography sx={{ fontSize: "1.5rem", fontFamily:"fantasy" }}>{"Stock"}</Typography>
                 <input
                   defaultValue={product.stock}
                   type="number"
                   disabled={!isEditMode}
+                  style={{ fontSize: "1.2rem", padding: "0.5rem" }}
                   {...register("stock")}
                 />
-              </Grid>
-              <Grid item xs={12}>
-                <Typography>{"price: "}</Typography>
+               </Box>
+               <Box sx={{marginY: 2}}>
+                <Typography sx={{ fontSize: "1.5rem", fontFamily:"fantasy" }}>{"Price: "}</Typography>
                 <input
                   defaultValue={product.price}
                   type="number"
                   disabled={!isEditMode}
+                  style={{ fontSize: "1.2rem", padding: "0.5rem" }}
                   {...register("price")}
-                />
-              </Grid>
-            </Grid>
-            {isEditMode && <input type="submit" />}
+                />       
+               </Box>       
+              <Box sx={{display:"flex", marginY: 2, justifyContent:"center", fontFamily:"fantasy"}}>
+            <input type="submit"  style={{
+                fontSize: "1.5rem",
+                padding: "0.5rem",
+                borderRadius: "10px",
+                border:"1px solid black",
+                textAlign:"center"
+              }} /> 
+              </Box>       
           </form>
-        </Box>
+        </Box>        
       ) : (
         <Typography>Loading...</Typography>
       )}

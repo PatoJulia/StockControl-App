@@ -80,13 +80,13 @@ export default function ClientDetail({ params }: { params: { id: string } }) {
         background: "linear-gradient(to bottom, #d0f0f0, #e9e9ef)",
         }}>
         <form onSubmit={handleSubmit(onSubmit)} style={{display:"flex", justifyContent:"center", flexDirection:"column" }} >
-        <Box mb={4}>
-            <Typography variant="h4" gutterBottom sx={{ fontSize: "2rem", textAlign:"center"}}>
+          <Box mb={4}>
+            <Typography variant="h4" gutterBottom sx={{ fontSize: "2rem", textAlign:"center", fontFamily:"fantasy", fontStyle:"italic"}}>
               Nuevo cliente
             </Typography>
           </Box>
             <Box sx={{marginY: 3}}>
-              <Typography sx={{ fontSize: "1.5rem" }}>{`Código`}</Typography>
+              <Typography sx={{ fontSize: "1.5rem", fontFamily:"fantasy", fontStyle:"initial" }}>{`Código`}</Typography>
               <input
                 type="text"
                 {...register("_id")}
@@ -94,7 +94,7 @@ export default function ClientDetail({ params }: { params: { id: string } }) {
               />
             </Box>
             <Box sx={{marginY: 3}}>
-              <Typography sx={{ fontSize: "1.5rem" }}>{"Nombre"}</Typography>
+              <Typography sx={{ fontSize: "1.5rem", fontFamily:"fantasy" }}>{"Nombre"}</Typography>
               <input
                 type="text"
                 {...register("name")}
@@ -102,7 +102,7 @@ export default function ClientDetail({ params }: { params: { id: string } }) {
               />
             </Box>
             <Box sx={{marginY: 3}}>
-              <Typography sx={{ fontSize: "1.5rem" }}>{"Dirección"}</Typography>
+              <Typography sx={{ fontSize: "1.5rem", fontFamily:"fantasy" }}>{"Dirección"}</Typography>
               <input
                 type="text"
                 {...register("addres")}
@@ -110,7 +110,7 @@ export default function ClientDetail({ params }: { params: { id: string } }) {
               />
             </Box>
             <Box sx={{marginY: 3}}>
-              <Typography sx={{ fontSize: "1.5rem" }}>{"Teléfono"}</Typography>
+              <Typography sx={{ fontSize: "1.5rem", fontFamily:"fantasy" }}>{"Teléfono"}</Typography>
               <input
                 type="number"
                 {...register("phone")}
@@ -118,7 +118,7 @@ export default function ClientDetail({ params }: { params: { id: string } }) {
               />
             </Box>
             <Box sx={{marginY: 3}}>
-              <Typography sx={{ fontSize: "1.5rem" }}>{"Email"}</Typography>
+              <Typography sx={{ fontSize: "1.5rem", fontFamily:"fantasy" }}>{"Email"}</Typography>
               <input
                 type="text"
                 {...register("e_mail")}

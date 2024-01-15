@@ -60,85 +60,94 @@ export default function ProductList() {
 
   return (
     <>
-       <Box
+      <Box
         sx={{
-          background: "linear-gradient(to bottom, #ffffff, #ffffff)",          padding: "20px", // Ajusta el espaciado interno según sea necesario
+          background: "linear-gradient(to bottom, #F9E8D9, #FFE382)",
+          padding: "20px", // Ajusta el espaciado interno según sea necesario
+          fontFamily: "fantasy", // Cambia la fuente según tus preferencias
         }}
       >
-      <Typography textAlign={"center"} fontWeight={"bold"} fontSize={"2rem"}>
-        Productos
-      </Typography>
-      <Grid container justifyContent={"space-evenly"} my={5}>
-        <Link href={"/home"}>
-          <Button style={{ color: "black", fontSize: "1.4rem" }}>
-            Inicio
+        <Typography
+          textAlign={"center"}
+          fontWeight={"bold"}
+          fontSize={"2rem"}
+          fontStyle={"italic"}
+        >
+          Productos
+        </Typography>
+        <Grid container justifyContent={"space-evenly"} my={5}>
+          <Link href={"/home"}>
+            <Button style={{ color: "black", fontSize: "1.4rem", fontFamily: "fantasy" }}>
+              Inicio
+            </Button>
+          </Link>
+
+          <Button
+            style={{ color: "black", fontSize: "1.4rem", fontFamily: "fantasy" }}
+            onClick={handleOpenModal}
+          >
+            Nuevo producto
           </Button>
-        </Link>
-
-        <Button
-          style={{ color: "black", fontSize: "1.4rem" }}
-          onClick={handleOpenModal}
-        >
-          Nuevo producto
-        </Button>
-        <Button
-         style={{ color: "black", fontSize: "1.4rem" }}
-          onClick={toggleTableView}
-        >
-        Lista de Productos
-        </Button>
-        <Button style={{ color: "black", fontSize: "1.4rem" }}>
-          Filtro
-        </Button>
-      </Grid>
-      <Grid container width={"80%"} mx={"10%"} spacing={5}>
-        {tableView ? (
-          <Grid item xs={12}>
-            <Table>
-              <TableHead style={{ backgroundColor: "#88AB8E" }}>
-                <TableCell>ProductCode</TableCell>
-                <TableCell align="right">Name</TableCell>
-                <TableCell align="right">Price</TableCell>
-                <TableCell align="right">Brand</TableCell>
-                <TableCell align="right">Stock</TableCell>
-                <TableCell align="right">Ultima factura</TableCell>
-              </TableHead>
-              <TableBody style={{ backgroundColor: "#EEE7DA" }}>
-                {products?.map((product, index) => (
-                  <TableRow
-                    key={product.name + "-" + index}
-                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                  >
-                    <TableCell component="th" scope="row">
-                      {product.productCode}
-                    </TableCell>
-                    <TableCell align="right">{product.name}</TableCell>
-                    <TableCell align="right">{product.price}</TableCell>
-                    <TableCell align="right">{product.brand}</TableCell>
-                    <TableCell align="right">{product.stock}</TableCell>
-                    <Box display={"flex"} justifyContent={"center"}>
-                      <Link href={"/bill"}>
-                        <TableCell align="left">Bill link</TableCell>
-                      </Link>
-                    </Box>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </Grid>
-        ) : (
-          products.map((product, index) => (
-            <Grid key={product.name + index} item xs={3}>
-              <ProductCard product={product} />
+          <Button
+            style={{ color: "black", fontSize: "1.4rem", fontFamily: "fantasy" }}
+            onClick={toggleTableView}
+          >
+            Lista de Productos
+          </Button>
+          <Button
+            style={{ color: "black", fontSize: "1.4rem", fontFamily: "fantasy" }}
+          >
+            Filtro
+          </Button>
+        </Grid>
+        <Grid container width={"80%"} mx={"10%"} spacing={5}>
+          {tableView ? (
+            <Grid item xs={12}>
+              <Table>
+                <TableHead style={{ backgroundColor: "#000000" }}>
+                  <TableCell style = {{color: "white",  fontSize: "1.2rem"}} >ProductCode</TableCell>
+                  <TableCell style = {{color: "white",  fontSize: "1.2rem"}} align="right">Name</TableCell>
+                  <TableCell style = {{color: "white",  fontSize: "1.2rem"}} align="right">Price</TableCell>
+                  <TableCell style = {{color: "white",  fontSize: "1.2rem"}} align="right">Brand</TableCell>
+                  <TableCell style = {{color: "white",  fontSize: "1.2rem"}} align="right">Stock</TableCell>
+                  <TableCell style = {{color: "white",  fontSize: "1.2rem"}} align="right">Ultima factura</TableCell>
+                </TableHead>
+                <TableBody style={{ backgroundColor: "#FFFFFF" }}>
+                  {products?.map((product, index) => (
+                    <TableRow
+                      key={product.name + "-" + index}
+                      sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                    >
+                      <TableCell component="th" scope="row">
+                        {product.productCode}
+                      </TableCell>
+                      <TableCell align="right">{product.name}</TableCell>
+                      <TableCell align="right">{product.price}</TableCell>
+                      <TableCell align="right">{product.brand}</TableCell>
+                      <TableCell align="right">{product.stock}</TableCell>
+                      <Box display={"flex"} justifyContent={"center"}>
+                        <Link href={"/bill"}>
+                          <TableCell align="left">Bill link</TableCell>
+                        </Link>
+                      </Box>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
             </Grid>
-          ))
-        )}
-      </Grid>
+          ) : (
+            products.map((product, index) => (
+              <Grid key={product.name + index} item xs={3}>
+                <ProductCard product={product} />
+              </Grid>
+            ))
+          )}
+        </Grid>
 
-      <ProductModal
-        closeCallback={handleCloseModal}
-        isModalOpen={isModalOpen}
-      />
+        <ProductModal
+          closeCallback={handleCloseModal}
+          isModalOpen={isModalOpen}
+        />
       </Box>
     </>
   );
