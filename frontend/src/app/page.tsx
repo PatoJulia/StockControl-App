@@ -27,7 +27,7 @@ export default function LoginPage() {
         >
           STOCK CONTROL APP
         </Typography>
-        <GoogleLoginButton />
+        <Button onClick={handleRedirectToHome}>Enter</Button>
       </Grid>
     </Box>
   );

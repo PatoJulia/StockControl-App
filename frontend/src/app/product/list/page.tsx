@@ -6,8 +6,6 @@ import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { useEffect, useState, useTransition } from "react";
-import PRODUCTS from "./MOCK";
-import { table } from "console";
 import {
   Box,
   Dialog,
@@ -144,6 +142,10 @@ export default function ProductList() {
           )}
         </Grid>
 
+        <ProductModal
+          closeCallback={handleCloseModal}
+          isModalOpen={isModalOpen}
+        />
         <ProductModal
           closeCallback={handleCloseModal}
           isModalOpen={isModalOpen}
