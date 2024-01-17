@@ -52,6 +52,46 @@ const MOCK_BILL: Bill = {
       stock: 50,
       price: 500,
     },
+    {
+      _id: "",
+      name: "product b",
+      productCode: "1",
+      brand: "brand 2",
+      stock: 50,
+      price: 500,
+    },
+    {
+      _id: "",
+      name: "product b",
+      productCode: "1",
+      brand: "brand 2",
+      stock: 50,
+      price: 500,
+    },
+    {
+      _id: "",
+      name: "product b",
+      productCode: "1",
+      brand: "brand 2",
+      stock: 50,
+      price: 500,
+    },
+    {
+      _id: "",
+      name: "product b",
+      productCode: "1",
+      brand: "brand 2",
+      stock: 50,
+      price: 500,
+    },
+    {
+      _id: "",
+      name: "product b",
+      productCode: "1",
+      brand: "brand 2",
+      stock: 50,
+      price: 500,
+    },
   ],
 };
 
@@ -94,13 +134,13 @@ export default function ProductList() {
       </Typography>
       <Grid container justifyContent={"space-evenly"} my={5}>
         <Link href={"/home"}>
-          <Button style={{ color: "black", backgroundColor: "#AFC8AD" }}>
+          <Button style={{ color: "black", backgroundColor: "#AFC8AD", fontSize: "1.1rem"}}>
             Inicio
           </Button>
         </Link>
 
         <Button
-          style={{ color: "black", backgroundColor: "#AFC8AD" }}
+          style={{ color: "black", backgroundColor: "#AFC8AD", fontSize: "1.1rem"}}
           onClick={handleOpenModal}
         >
           Nuevo
@@ -110,11 +150,11 @@ export default function ProductList() {
         <Grid item xs={12}>
           <Table>
             <TableHead style={{ backgroundColor: "#88AB8E" }}>
-              <TableCell>Fecha</TableCell>
-              <TableCell align="right">Cliente</TableCell>
-              <TableCell align="right">Productos</TableCell>
-              <TableCell align="right">Moneda</TableCell>
-              <TableCell align="right">Total</TableCell>
+              <TableCell style = {{textAlign:"center",  fontSize: "1.2rem"}} >Fecha</TableCell>
+              <TableCell style = {{textAlign:"center",  fontSize: "1.2rem"}} >Cliente</TableCell>
+              <TableCell style = {{textAlign:"center",  fontSize: "1.2rem"}} >Productos</TableCell>
+              <TableCell style = {{textAlign:"center",  fontSize: "1.2rem"}} >Moneda</TableCell>
+              <TableCell style = {{textAlign:"center",  fontSize: "1.2rem"}} >Total</TableCell>
             </TableHead>
             <TableBody style={{ backgroundColor: "#EEE7DA" }}>
               {MOCK_BILL_LIST.map((bill, index) => (
@@ -122,21 +162,19 @@ export default function ProductList() {
                   key={bill._id + "-" + index}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
-                  <TableCell component="th" scope="row">
+                  <TableCell align="center" component="th" scope="row">
                     {bill.dateOfIssue.getTime()}
                   </TableCell>
-                  <TableCell align="right">{bill.client.name}</TableCell>
+                  <TableCell align="center">{bill.client.name}</TableCell>
                   <TableCell>
                     {bill.productList.map((product) => (
-                      <TableRow key={product._id}>
-                        <TableCell>
-                          <Typography>{product.name}</Typography>
-                        </TableCell>
-                      </TableRow>
+                      <Typography key={product._id} align="center">
+                        {product.name}
+                      </Typography>
                     ))}
                   </TableCell>
-                  <TableCell align="right">{bill.currency}</TableCell>
-                  <TableCell align="right">{bill.total}</TableCell>
+                  <TableCell align="center">{bill.currency}</TableCell>
+                  <TableCell align="center">{bill.total}</TableCell>
                 </TableRow>
               ))}
             </TableBody>

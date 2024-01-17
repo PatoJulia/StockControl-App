@@ -60,7 +60,9 @@ export default function ProductList() {
     <>
       <Box
         sx={{
-          background: "linear-gradient(to bottom, #F9E8D9, #FFE382)",
+          //background: "linear-gradient(to bottom, #7FC7D9, #B2FAFA)",
+          //background: "linear-gradient(to bottom, #F9E8D9, #FFE382)",
+          backgroundColor: "#FFFFFF",
           padding: "20px", // Ajusta el espaciado interno según sea necesario
           fontFamily: "fantasy", // Cambia la fuente según tus preferencias
         }}
@@ -104,13 +106,13 @@ export default function ProductList() {
               <Table>
                 <TableHead style={{ backgroundColor: "#000000" }}>
                   <TableCell style = {{color: "white",  fontSize: "1.2rem"}} >ProductCode</TableCell>
-                  <TableCell style = {{color: "white",  fontSize: "1.2rem"}} align="right">Name</TableCell>
-                  <TableCell style = {{color: "white",  fontSize: "1.2rem"}} align="right">Price</TableCell>
-                  <TableCell style = {{color: "white",  fontSize: "1.2rem"}} align="right">Brand</TableCell>
+                  <TableCell style = {{color: "white",  fontSize: "1.2rem"}} align="right">Nombre</TableCell>
+                  <TableCell style = {{color: "white",  fontSize: "1.2rem"}} align="right">Precio</TableCell>
+                  <TableCell style = {{color: "white",  fontSize: "1.2rem"}} align="right">Marca</TableCell>
                   <TableCell style = {{color: "white",  fontSize: "1.2rem"}} align="right">Stock</TableCell>
                   <TableCell style = {{color: "white",  fontSize: "1.2rem"}} align="right">Ultima factura</TableCell>
                 </TableHead>
-                <TableBody style={{ backgroundColor: "#FFFFFF" }}>
+                <TableBody style={{ backgroundColor: "#EEE7DA" }}>
                   {products?.map((product, index) => (
                     <TableRow
                       key={product.name + "-" + index}
@@ -123,11 +125,13 @@ export default function ProductList() {
                       <TableCell align="right">{product.price}</TableCell>
                       <TableCell align="right">{product.brand}</TableCell>
                       <TableCell align="right">{product.stock}</TableCell>
+                      <TableCell align="left">
                       <Box display={"flex"} justifyContent={"center"}>
                         <Link href={"/bill"}>
-                          <TableCell align="left">Bill link</TableCell>
+                          Bill link
                         </Link>
                       </Box>
+                      </TableCell>
                     </TableRow>
                   ))}
                 </TableBody>

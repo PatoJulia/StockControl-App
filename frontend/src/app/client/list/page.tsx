@@ -60,53 +60,55 @@ export default function ProductList() {
 
   return (
     <>
+    <Box
+      sx={{
+        minHeight: "100vh",
+        background: "linear-gradient(to bottom, #7FC7D9, #ffffff)",
+        padding: "20px",
+        fontFamily: "fantasy"
+      }}>
       <Typography textAlign={"center"} fontWeight={"bold"} fontSize={"2rem"}>
-        Productos
+        Clientes
       </Typography>
       <Grid container justifyContent={"space-evenly"} my={5}>
         <Link href={"/home"}>
-          <Button style={{ color: "black", backgroundColor: "#AFC8AD" }}>
-            Arrow Left
+          <Button style={{ color: "black", fontSize: "1.4rem", fontFamily: "fantasy" }}>
+            Inicio
           </Button>
         </Link>
 
         <Button
-          style={{ color: "black", backgroundColor: "#AFC8AD" }}
+          style={{ color: "black", fontSize: "1.4rem", fontFamily: "fantasy"  }}
           onClick={handleOpenModal}
         >
           Nuevo
         </Button>
-        <Button
-          style={{ color: "black", backgroundColor: "#AFC8AD" }}
-          onClick={toggleTableView}
-        >
-          ToggleView
-        </Button>
-        <Button style={{ color: "black", backgroundColor: "#AFC8AD" }}>
+        
+        <Button style={{ color: "black", fontSize: "1.4rem", fontFamily: "fantasy"  }}>
           Filter
         </Button>
       </Grid>
       <Grid container width={"80%"} mx={"10%"} spacing={5}>
         <Grid item xs={12}>
-          <Table>
-            <TableHead style={{ backgroundColor: "#88AB8E" }}>
-              <TableCell>ProductCode</TableCell>
-              <TableCell align="right">Name</TableCell>
-              <TableCell align="right">Price</TableCell>
-              <TableCell align="right">Brand</TableCell>
-              <TableCell align="right">Stock</TableCell>
-              <TableCell align="right">Ultima factura</TableCell>
-            </TableHead>
+        <Table>
+                <TableHead style={{ backgroundColor: "#000000" }}>
+                  <TableCell style = {{color: "white",  fontSize: "1.2rem"}} >Codigo de Cliente</TableCell>
+                  <TableCell style = {{color: "white",  fontSize: "1.2rem"}} align="right">Nombre</TableCell>
+                  <TableCell style = {{color: "white",  fontSize: "1.2rem"}} align="right">Direccion</TableCell>
+                  <TableCell style = {{color: "white",  fontSize: "1.2rem"}} align="right">Telefono</TableCell>
+                  <TableCell style = {{color: "white",  fontSize: "1.2rem"}} align="right">Email</TableCell>
+                  <TableCell style = {{color: "white",  fontSize: "1.2rem"}} align="right">Ultima factura</TableCell>
+                </TableHead>
             <TableBody style={{ backgroundColor: "#EEE7DA" }}>
               {clients?.map((client, index) => (
-                <TableRow
+                <TableRow 
                   key={client.name + "-" + index}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
-                  <TableCell component="th" scope="row">
+                  <TableCell  component="th" scope="row">
                     {client.name}
                   </TableCell>
-                  <TableCell align="right">{client.email}</TableCell>
+                  <TableCell  align="right">{client.email}</TableCell>
                   <TableCell align="right">{client.address}</TableCell>
                   <TableCell align="right">{client.phone}</TableCell>
                 </TableRow>
@@ -120,6 +122,7 @@ export default function ProductList() {
         closeCallback={handleCloseModal}
         isModalOpen={isModalOpen}
       />
+      </Box>
     </>
   );
 }

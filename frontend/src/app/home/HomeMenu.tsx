@@ -42,8 +42,9 @@ export default function HomeMenu() {
       sx={{
         marginTop: 2.5,
         //background: "linear-gradient(to bottom, #97CEEB, #FFA5F0 )",
-       //background: "linear-gradient(to bottom, #7FC7D9, #ffffff)",
-        background: "linear-gradient(to bottom, #D2E3C8, #D2E3C8)",
+        //background: "linear-gradient(to bottom, #7FC7D9, #ffffff)",
+        //background: "linear-gradient(to bottom, #D2E3C8, #D2E3C8)",
+        backgroundColor: "FFFFFF",
         minHeight: "100vh",
         padding: "20px",
       }}
@@ -62,7 +63,7 @@ export default function HomeMenu() {
           justifyContent={"center"}
         >
           {products.splice(0, 4).map((product) => (
-            <Grid item xs={4} key={product._id}>
+            <Grid item xs={5} key={product._id}>
               <ProductCard product={product} />
             </Grid>
           ))}
