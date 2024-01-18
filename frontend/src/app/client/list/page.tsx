@@ -63,7 +63,6 @@ export default function ProductList() {
     <Box
       sx={{
         minHeight: "100vh",
-        background: "linear-gradient(to bottom, #7FC7D9, #ffffff)",
         padding: "20px",
         fontFamily: "fantasy"
       }}>
@@ -108,9 +107,11 @@ export default function ProductList() {
                   <TableCell  component="th" scope="row">
                     {client.name}
                   </TableCell>
-                  <TableCell  align="right">{client.email}</TableCell>
+                  <TableCell  align="right">{client.name}</TableCell>
                   <TableCell align="right">{client.address}</TableCell>
                   <TableCell align="right">{client.phone}</TableCell>
+                  <TableCell align="right">{client.email}</TableCell>           
+                  
                 </TableRow>
               ))}
             </TableBody>

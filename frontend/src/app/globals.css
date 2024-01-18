@@ -6,6 +6,7 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 242, 241, 235;
   --background-end-rgb: 242, 241, 235;
+  
 }
 /*
 @media (prefers-color-scheme: dark) {
@@ -17,9 +18,6 @@
 }
 */
 body {
-  background: linear-gradient(
-    to bottom,
-    rgb(var(--background-start-rgb)),
-    rgb(var(--background-end-rgb))
-  );
+  background-color:"black",
+  ;
 }

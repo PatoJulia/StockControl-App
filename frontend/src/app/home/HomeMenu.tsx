@@ -43,8 +43,7 @@ export default function HomeMenu() {
         marginTop: 2.5,
         //background: "linear-gradient(to bottom, #97CEEB, #FFA5F0 )",
         //background: "linear-gradient(to bottom, #7FC7D9, #ffffff)",
-        //background: "linear-gradient(to bottom, #D2E3C8, #D2E3C8)",
-        backgroundColor: "FFFFFF",
+        //background: "linear-gradient(to bottom, #D2E3C8, #D2E3C8)",      
         minHeight: "100vh",
         padding: "20px",
       }}

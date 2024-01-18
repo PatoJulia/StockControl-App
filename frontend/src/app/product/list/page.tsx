@@ -60,9 +60,8 @@ export default function ProductList() {
     <>
       <Box
         sx={{
-          //background: "linear-gradient(to bottom, #7FC7D9, #B2FAFA)",
-          //background: "linear-gradient(to bottom, #F9E8D9, #FFE382)",
-          backgroundColor: "#FFFFFF",
+          //background: "linearF-gradient(to bottom, #7FC7D9, #B2FAFA)",
+          //background: "lineaFr-gradient(to bottom, #F9E8D9, #FFE382)",
           padding: "20px", // Ajusta el espaciado interno según sea necesario
           fontFamily: "fantasy", // Cambia la fuente según tus preferencias
         }}
