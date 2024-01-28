@@ -3,6 +3,7 @@ enum Currency {
   EUR = "EUR",
   GBP = "GBP",
   JPY = "JPY",
+  ARG = "ARG",
 }
 
 namespace Currency {

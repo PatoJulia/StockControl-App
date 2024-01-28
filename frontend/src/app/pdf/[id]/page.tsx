@@ -1,14 +1,14 @@
 "use client";
 import { useEffect, useState } from "react";
 
-export default function MockPDF() {
+export default function BillPDF({ params }: { params: { id: string } }) {
   const [pdf, setPDF] = useState<ArrayBuffer>();
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         const response = await fetch(
-          "http://localhost:4300/bill/65885638f1b71adf5d8c6ba7/pdf"
+          `http://localhost:4300/bill/${params.id}/pdf`
         );
         const data = await response.arrayBuffer();
         setPDF(data);

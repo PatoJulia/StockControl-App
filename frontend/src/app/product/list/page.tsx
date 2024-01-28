@@ -76,25 +76,43 @@ export default function ProductList() {
         </Typography>
         <Grid container justifyContent={"space-evenly"} my={5}>
           <Link href={"/home"}>
-            <Button style={{ color: "black", fontSize: "1.4rem", fontFamily: "fantasy" }}>
+            <Button
+              style={{
+                color: "black",
+                fontSize: "1.4rem",
+                fontFamily: "fantasy",
+              }}
+            >
               Inicio
             </Button>
           </Link>
 
           <Button
-            style={{ color: "black", fontSize: "1.4rem", fontFamily: "fantasy" }}
+            style={{
+              color: "black",
+              fontSize: "1.4rem",
+              fontFamily: "fantasy",
+            }}
             onClick={handleOpenModal}
           >
             Nuevo producto
           </Button>
           <Button
-            style={{ color: "black", fontSize: "1.4rem", fontFamily: "fantasy" }}
+            style={{
+              color: "black",
+              fontSize: "1.4rem",
+              fontFamily: "fantasy",
+            }}
             onClick={toggleTableView}
           >
             Lista de Productos
           </Button>
           <Button
-            style={{ color: "black", fontSize: "1.4rem", fontFamily: "fantasy" }}
+            style={{
+              color: "black",
+              fontSize: "1.4rem",
+              fontFamily: "fantasy",
+            }}
           >
             Filtro
           </Button>
@@ -104,12 +122,39 @@ export default function ProductList() {
             <Grid item xs={12}>
               <Table>
                 <TableHead style={{ backgroundColor: "#000000" }}>
-                  <TableCell style = {{color: "white",  fontSize: "1.2rem"}} >ProductCode</TableCell>
-                  <TableCell style = {{color: "white",  fontSize: "1.2rem"}} align="right">Nombre</TableCell>
-                  <TableCell style = {{color: "white",  fontSize: "1.2rem"}} align="right">Precio</TableCell>
-                  <TableCell style = {{color: "white",  fontSize: "1.2rem"}} align="right">Marca</TableCell>
-                  <TableCell style = {{color: "white",  fontSize: "1.2rem"}} align="right">Stock</TableCell>
-                  <TableCell style = {{color: "white",  fontSize: "1.2rem"}} align="right">Ultima factura</TableCell>
+                  <TableCell style={{ color: "white", fontSize: "1.2rem" }}>
+                    ProductCode
+                  </TableCell>
+                  <TableCell
+                    style={{ color: "white", fontSize: "1.2rem" }}
+                    align="right"
+                  >
+                    Nombre
+                  </TableCell>
+                  <TableCell
+                    style={{ color: "white", fontSize: "1.2rem" }}
+                    align="right"
+                  >
+                    Precio
+                  </TableCell>
+                  <TableCell
+                    style={{ color: "white", fontSize: "1.2rem" }}
+                    align="right"
+                  >
+                    Marca
+                  </TableCell>
+                  <TableCell
+                    style={{ color: "white", fontSize: "1.2rem" }}
+                    align="right"
+                  >
+                    Stock
+                  </TableCell>
+                  <TableCell
+                    style={{ color: "white", fontSize: "1.2rem" }}
+                    align="right"
+                  >
+                    Ultima factura
+                  </TableCell>
                 </TableHead>
                 <TableBody style={{ backgroundColor: "#EEE7DA" }}>
                   {products?.map((product, index) => (
@@ -125,11 +170,9 @@ export default function ProductList() {
                       <TableCell align="right">{product.brand}</TableCell>
                       <TableCell align="right">{product.stock}</TableCell>
                       <TableCell align="left">
-                      <Box display={"flex"} justifyContent={"center"}>
-                        <Link href={"/bill"}>
-                          Bill link
-                        </Link>
-                      </Box>
+                        <Box display={"flex"} justifyContent={"center"}>
+                          <Link href={"/bill"}>Bill link</Link>
+                        </Box>
                       </TableCell>
                     </TableRow>
                   ))}
@@ -145,10 +188,6 @@ export default function ProductList() {
           )}
         </Grid>
 
-        <ProductModal
-          closeCallback={handleCloseModal}
-          isModalOpen={isModalOpen}
-        />
         <ProductModal
           closeCallback={handleCloseModal}
           isModalOpen={isModalOpen}

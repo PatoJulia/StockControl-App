@@ -1,7 +1,7 @@
 import Currency from "./Currency";
 
 export default interface Product {
-  _id: string;
+  _id?: string;
   name: string;
   imageUrl?: string;
   productCode: string;

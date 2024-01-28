@@ -3,12 +3,22 @@ import Currency from "./Currency";
 import Product from "./Product";
 
 export interface Bill {
+  description: string;
+  discount: number;
+  total: number;
+  dateOfIssue: Date;
+  //currency: Currency;
+  clientName: string;
+  productListNames: string[];
+}
+
+export interface BillResponse {
   _id: string;
   description: string;
   discount: number;
   total: number;
   dateOfIssue: Date;
-  currency: Currency;
+  //currency: Currency;
   client: Client;
   productList: Product[];
 }

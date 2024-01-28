@@ -1,5 +1,5 @@
 export default interface Client {
-  _id: string;
+  _id?: string;
   name: string;
   address?: string;
   phone?: number;

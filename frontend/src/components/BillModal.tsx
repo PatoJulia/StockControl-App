@@ -8,40 +8,35 @@ import {
   Button,
 } from "@mui/material";
 import ProductDetail from "@/app/product/[id]/page";
-import Product from "@/interfaces/Product";
 
-export default function ProductModal({
+export default function BillModal({
   isModalOpen,
   closeCallback,
 }: {
   isModalOpen: boolean;
   closeCallback: () => void;
 }) {
-  const [productName, setProductName] = useState<string>("");
-  const [productPrice, setProductPrice] = useState<number>(0);
-  const [productBrand, setProductBrand] = useState<string>("");
-  const [productDescription, setProductDescription] = useState<string>("");
-  const [productStock, setProductStock] = useState<number>(0);
-  const [productCode, setProductCode] = useState<string>("");
+  // State for form fields
+  const [productName, setProductName] = useState("");
+  const [productPrice, setProductPrice] = useState("");
+  const [productBrand, setProductBrand] = useState("");
+  const [productDesciption, setProductDescription] = useState("");
+  const [productStock, setProductStock] = useState("");
+  const [productImage, setProductImage] = useState("");
+  const [productCode, setProductCode] = useState("");
 
-  const handleFormSubmit = async () => {
-    const data: Product = {
-      name: productName,
-      price: productPrice,
-      brand: productBrand,
-      description: productDescription,
-      stock: productStock,
-      productCode: productCode,
-    };
-    try {
-      const response = await fetch("http://localhost:4300/product", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-    } catch (error) {
-      console.error("Error fetching products:", error);
-    }
+  // Function to handle form submission
+  const handleFormSubmit = () => {
+    // Perform any necessary actions with form data
+    console.log("Codigo:", productCode);
+    console.log("Product Name:", productName);
+    console.log("Descripcion:", productDesciption);
+    console.log("Product Price:", productPrice);
+    console.log("marca:", productBrand);
+    console.log("stock:", productStock);
+    console.log("imagen:", productImage);
+
+    // Close the modal
     closeCallback();
   };
 
@@ -49,7 +44,9 @@ export default function ProductModal({
     <Dialog open={isModalOpen} onClose={closeCallback}>
       <DialogTitle>New Product</DialogTitle>
       <DialogContent>
+        {/* Form */}
         <form>
+          {/* Product Name */}
           <TextField
             label="Product Name"
             variant="outlined"
@@ -71,16 +68,17 @@ export default function ProductModal({
             variant="outlined"
             fullWidth
             margin="normal"
-            value={productDescription}
+            value={productDesciption}
             onChange={(e) => setProductDescription(e.target.value)}
           />
           {/* Product Price */}
-          <label>Price</label>
-
-          <input
-            type="number"
+          <TextField
+            label="Product Price"
+            variant="outlined"
+            fullWidth
+            margin="normal"
             value={productPrice}
-            onChange={(e) => setProductPrice(e.target.valueAsNumber)}
+            onChange={(e) => setProductPrice(e.target.value)}
           />
 
           <TextField
@@ -91,11 +89,21 @@ export default function ProductModal({
             value={productBrand}
             onChange={(e) => setProductBrand(e.target.value)}
           />
-          <label>Stock</label>
-          <input
-            type="number"
+          <TextField
+            label="Product Stock"
+            variant="outlined"
+            fullWidth
+            margin="normal"
             value={productStock}
-            onChange={(e) => setProductStock(e.target.valueAsNumber)}
+            onChange={(e) => setProductStock(e.target.value)}
+          />
+          <TextField
+            label="Product Image"
+            variant="outlined"
+            fullWidth
+            margin="normal"
+            value={productImage}
+            onChange={(e) => setProductImage(e.target.value)}
           />
 
           {/* Submit Button */}

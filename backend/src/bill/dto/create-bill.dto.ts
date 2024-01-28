@@ -27,12 +27,12 @@ export class CreateBillDto {
 
   @IsString()
   @IsNotEmpty()
-  currencyId: string;
+  currencyCode: string;
 
   @IsString()
   @IsNotEmpty()
-  clientId: string;
+  clientName: string;
 
   @IsNotEmpty()
-  productListIds: string[];
+  productListNames: string[];
 }

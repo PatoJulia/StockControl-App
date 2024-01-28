@@ -3,18 +3,36 @@ import { CreateBillDto } from './dto/create-bill.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Bill } from './schema/bill.schema';
+import { Client } from 'src/client/schema/client.schema';
+import { Currency } from 'src/currency/schema/currency.schema';
+import { Product } from 'src/product/schema/product.schema';
 const PDFDocument = require('pdfkit-table');
 
 @Injectable()
 export class BillService {
-  constructor(@InjectModel(Bill.name) private billModel: Model<Bill>) {}
-  create(createBillDto: CreateBillDto) {
+  constructor(
+    @InjectModel(Bill.name) private billModel: Model<Bill>,
+    @InjectModel(Client.name) private clientModel: Model<Client>,
+    @InjectModel(Currency.name) private currencyModel: Model<Currency>,
+    @InjectModel(Product.name) private producttModel: Model<Product>,
+  ) {}
+  async create(createBillDto: CreateBillDto) {
+    const client = await this.clientModel.findOne({
+      name: createBillDto.clientName,
+    });
+    /*
+    const currency = await this.currencyModel.findOne({
+      code: createBillDto.currencyCode,
+    });*/
+    const productList = await this.producttModel.find({
+      name: { $in: createBillDto.productListNames },
+    });
+
     return this.billModel
       .create({
         ...createBillDto,
-        client: createBillDto.clientId,
-        currency: createBillDto.currencyId,
-        productList: createBillDto.productListIds,
+        client: client._id, // Assuming client has an '_id' field
+        productList: productList.map((product) => product._id), // Assuming productList has an '_id' field
       })
       .then((bill) => bill.populate(['currency', 'client', 'productList']));
   }
