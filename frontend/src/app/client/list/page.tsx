@@ -60,10 +60,10 @@ export default function ClientList() {
         sx={{
           minHeight: "100vh",
           padding: "20px",
-          fontFamily: "fantasy",
+          fontFamily: "Bitter",
         }}
       >
-        <Typography textAlign={"center"} fontWeight={"bold"} fontSize={"2rem"}>
+        <Typography textAlign={"center"} fontWeight={"bold"} fontSize={"2rem"}fontFamily={"Bitter"} fontStyle={"italic"}>
           Clientes
         </Typography>
         <Grid container justifyContent={"space-evenly"} my={5}>
@@ -72,7 +72,7 @@ export default function ClientList() {
               style={{
                 color: "black",
                 fontSize: "1.4rem",
-                fontFamily: "fantasy",
+                fontFamily: "Bitter",
               }}
             >
               Inicio
@@ -83,7 +83,7 @@ export default function ClientList() {
             style={{
               color: "black",
               fontSize: "1.4rem",
-              fontFamily: "fantasy",
+              fontFamily: "Bitter",
             }}
             onClick={handleOpenModal}
           >
@@ -94,7 +94,7 @@ export default function ClientList() {
             style={{
               color: "black",
               fontSize: "1.4rem",
-              fontFamily: "fantasy",
+              fontFamily: "Bitter",
             }}
           >
             Filter

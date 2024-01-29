@@ -18,7 +18,7 @@ export default function ProductModal({
   closeCallback: () => void;
 }) {
   const [productName, setProductName] = useState<string>("");
-  const [productPrice, setProductPrice] = useState<number>(0);
+  const [productPrice, setProductPrice] = useState<number>();
   const [productBrand, setProductBrand] = useState<string>("");
   const [productDescription, setProductDescription] = useState<string>("");
   const [productStock, setProductStock] = useState<number>(0);
@@ -75,22 +75,22 @@ export default function ProductModal({
             onChange={(e) => setProductDescription(e.target.value)}
           />
           {/* Product Price */}
-          <label>Price</label>
-
-          <input
-            type="number"
-            value={productPrice}
-            onChange={(e) => setProductPrice(e.target.valueAsNumber)}
-          />
 
           <TextField
-            label="Product Brand"
+            label="Product brand"
             variant="outlined"
             fullWidth
             margin="normal"
             value={productBrand}
             onChange={(e) => setProductBrand(e.target.value)}
           />
+             <label>Price</label>
+
+            <input
+              type="number"
+              value={productPrice}
+              onChange={(e) => setProductPrice(e.target.valueAsNumber)}
+            />
           <label>Stock</label>
           <input
             type="number"

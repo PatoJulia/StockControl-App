@@ -50,7 +50,7 @@ export default function HomeMenu() {
     >
       <Box sx={{ marginTop: 2.5 }}>
         <Box display={"flex"} justifyContent={"center"}>
-          <Typography variant="h4">Control de Stock</Typography>
+          <Typography variant="h4" style={ {fontFamily:"Bitter", fontStyle:"italic"}}>Control de Stock</Typography>
         </Box>
 
         <Grid

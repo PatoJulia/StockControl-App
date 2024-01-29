@@ -87,14 +87,14 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
           
           <form onSubmit={handleSubmit(onSubmit)} style={{display:"flex", justifyContent:"center", flexDirection:"column" }}>
             <Box mb={4}>
-              <Typography variant="h4" gutterBottom sx={{ fontSize: "2rem", textAlign:"center", fontFamily:"fantasy", fontStyle:"italic"}}>
+              <Typography variant="h4" gutterBottom sx={{ fontSize: "2rem", textAlign:"center", fontFamily:"Bitter", fontStyle:"italic"}}>
               Nueva Factura
               </Typography>
 
             </Box>
             <Box sx={{marginY: 2}}>  
               <button onClick={toggleEditMode} >Editar</button>          
-              <Typography sx={{ fontSize: "1.5rem", fontFamily:"fantasy" }}>{`Nombre`}</Typography>
+              <Typography sx={{ fontSize: "1.5rem", fontFamily:"Bitter" }}>{`Nombre`}</Typography>
               <input
                   defaultValue={product.name}
                   type="text"
@@ -105,7 +105,7 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
               </Box>
              
               <Box sx={{marginY: 2}}>             
-                <Typography sx={{ fontSize: "1.5rem", fontFamily:"fantasy" }}>{"Descripcion"}</Typography>
+                <Typography sx={{ fontSize: "1.5rem", fontFamily:"Bitter" }}>{"Descripcion"}</Typography>
                 <input
                   defaultValue={product.description}
                   type="text"
@@ -115,7 +115,7 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
                 />            
               </Box>
               <Box sx={{marginY: 2}}>              
-                <Typography sx={{ fontSize: "1.5rem", fontFamily:"fantasy" }}>{"Marca"}</Typography>
+                <Typography sx={{ fontSize: "1.5rem", fontFamily:"Bitter" }}>{"Marca"}</Typography>
                 <input
                   defaultValue={product.brand}
                   type="text"
@@ -125,7 +125,7 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
                 />             
               </Box>
               <Box sx={{marginY: 2}}>
-                <Typography sx={{ fontSize: "1.5rem", fontFamily:"fantasy" }}>{"Stock"}</Typography>
+                <Typography sx={{ fontSize: "1.5rem", fontFamily:"Bitter" }}>{"Stock"}</Typography>
                 <input
                   defaultValue={product.stock}
                   type="number"
@@ -135,7 +135,7 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
                 />
                </Box>
                <Box sx={{marginY: 2}}>
-                <Typography sx={{ fontSize: "1.5rem", fontFamily:"fantasy" }}>{"Price: "}</Typography>
+                <Typography sx={{ fontSize: "1.5rem", fontFamily:"Bitter" }}>{"Price: "}</Typography>
                 <input
                   defaultValue={product.price}
                   type="number"
@@ -150,7 +150,8 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
                 padding: "0.5rem",
                 borderRadius: "10px",
                 border:"1px solid black",
-                textAlign:"center"
+                textAlign:"center",
+                cursor: "pointer",
               }} /> 
               </Box>       
           </form>

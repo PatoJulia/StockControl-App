@@ -79,55 +79,68 @@ export default function NewBill() {
 
   return (
     <>
-      <Box>
-        <Grid container>
-          <Grid item xs={12}>
-            <Typography>{`Products`}</Typography>
-            <Select
-              multiple
-              value={selectedProducts.map((product) => product.name)}
-              onChange={(e) => {
-                const selectedProductNames = e.target.value;
-                const selectedProductObjects = products.filter((product) =>
-                  selectedProductNames.includes(product.name)
-                );
-                setSelectedProducts(selectedProductObjects);
-              }}
-            >
-              {products.map((product) => (
-                <MenuItem key={product.name} value={product.name}>
-                  {product.name}
-                </MenuItem>
-              ))}
-            </Select>
-          </Grid>
-          <Grid item xs={12}>
-            <Typography>{"Clients"}</Typography>
-            <Select
-              value={selectedClient?.name || ""}
-              onChange={(e) => {
-                const selectedClientName = e.target.value as string;
-                const selectedClientObject = clients.find(
-                  (client) => client.name === selectedClientName
-                );
-                setSelectedClient(selectedClientObject);
-              }}
-            >
-              {clients.map((client) => (
-                <MenuItem key={client.name} value={client.name}>
-                  {client.name}
-                </MenuItem>
-              ))}
-            </Select>
-          </Grid>
+    <div style={{ display: 'flex', background: "linear-gradient(to bottom, #d0f0f0, #e9e9ef)", justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+    <Box>
+      <Grid container spacing={2}>
+      <Grid item xs={12}>
+          <Typography variant="h4" style={{textAlign:"center"}}> Nuevo Remito</Typography>
+        </Grid>
+        <Grid item xs={12}>
+          <Typography>{`Productos`}</Typography>
+          <Select
+            multiple
+            value={selectedProducts.map((product) => product.name)}
+            onChange={(e) => {
+              const selectedProductNames = e.target.value;
+              const selectedProductObjects = products.filter((product) =>
+                selectedProductNames.includes(product.name)
+              );
+              setSelectedProducts(selectedProductObjects);
+            }}
+            style={{ width: '100%' }}
+          >
+            {products.map((product) => (
+              <MenuItem key={product.name} value={product.name}>
+                {product.name}
+              </MenuItem>
+            ))}
+          </Select>
+        </Grid>
+        <Grid item xs={12}>
+          <Typography>{"Clientes"}</Typography>
+          <Select
+            value={selectedClient?.name || ""}
+            onChange={(e) => {
+              const selectedClientName = e.target.value as string;
+              const selectedClientObject = clients.find(
+                (client) => client.name === selectedClientName
+              );
+              setSelectedClient(selectedClientObject);
+            }}
+            style={{ width: '100%' }}
+          >
+            {clients.map((client) => (
+              <MenuItem key={client.name} value={client.name}>
+                {client.name}
+              </MenuItem>
+            ))}
+          </Select>
+        </Grid>
+        <Grid item xs={12}>
           <TextField
             onChange={(e) => setDescription(e.target.value)}
             value={description}
-            label={"Description"}
+            label={"Descripción"}
+            multiline
+            rows={4}
+            variant="outlined"
+            fullWidth
           />
         </Grid>
-        <input type="submit" onClick={() => handleSubmit()} />
-      </Box>
+      </Grid>
+      <input type="submit" onClick={() => handleSubmit()} style={{ cursor: 'pointer' }}/>
+    </Box>
+  </div>
     </>
   );
 }

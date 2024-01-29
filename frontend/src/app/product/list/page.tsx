@@ -70,6 +70,7 @@ export default function ProductList() {
           textAlign={"center"}
           fontWeight={"bold"}
           fontSize={"2rem"}
+          fontFamily={"Bitter"}
           fontStyle={"italic"}
         >
           Productos
@@ -80,7 +81,7 @@ export default function ProductList() {
               style={{
                 color: "black",
                 fontSize: "1.4rem",
-                fontFamily: "fantasy",
+                fontFamily: "Bitter",
               }}
             >
               Inicio
@@ -91,7 +92,7 @@ export default function ProductList() {
             style={{
               color: "black",
               fontSize: "1.4rem",
-              fontFamily: "fantasy",
+              fontFamily: "Bitter",
             }}
             onClick={handleOpenModal}
           >
@@ -101,7 +102,7 @@ export default function ProductList() {
             style={{
               color: "black",
               fontSize: "1.4rem",
-              fontFamily: "fantasy",
+              fontFamily: "Bitter",
             }}
             onClick={toggleTableView}
           >
@@ -111,7 +112,7 @@ export default function ProductList() {
             style={{
               color: "black",
               fontSize: "1.4rem",
-              fontFamily: "fantasy",
+              fontFamily: "Bitter",
             }}
           >
             Filtro

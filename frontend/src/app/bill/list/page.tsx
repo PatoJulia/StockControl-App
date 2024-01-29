@@ -46,7 +46,7 @@ export default function ProductList() {
   useEffect(() => console.log(bills), [bills]);
   return (
     <>
-      <Typography textAlign={"center"} fontWeight={"bold"} fontSize={"2rem"}>
+      <Typography textAlign={"center"} fontWeight={"bold"} fontSize={"2rem"} fontFamily={"Bitter"} fontStyle={"italic"}>
         Remitos
       </Typography>
       <Grid container justifyContent={"space-evenly"} my={5}>
@@ -54,8 +54,9 @@ export default function ProductList() {
           <Button
             style={{
               color: "black",
-              backgroundColor: "#AFC8AD",
+              backgroundColor: "#ffffff",
               fontSize: "1.1rem",
+              fontFamily: "Bitter",
             }}
           >
             Inicio
@@ -66,8 +67,9 @@ export default function ProductList() {
           <Button
             style={{
               color: "black",
-              backgroundColor: "#AFC8AD",
+              backgroundColor: "#ffffff",
               fontSize: "1.1rem",
+              fontFamily: "Bitter",
             }}
           >
             Nuevo
@@ -77,23 +79,23 @@ export default function ProductList() {
       <Grid container width={"80%"} mx={"10%"} spacing={5}>
         <Grid item xs={12}>
           <Table>
-            <TableHead style={{ backgroundColor: "#88AB8E" }}>
-              <TableCell style={{ textAlign: "center", fontSize: "1.2rem" }}>
+            <TableHead style={{ backgroundColor: "#000000" }}>
+              <TableCell style={{  color: "white", textAlign: "center", fontSize: "1.2rem" }}>
                 Fecha
               </TableCell>
-              <TableCell style={{ textAlign: "center", fontSize: "1.2rem" }}>
+              <TableCell style={{ color: "white", textAlign: "center", fontSize: "1.2rem" }}>
                 Cliente
               </TableCell>
-              <TableCell style={{ textAlign: "center", fontSize: "1.2rem" }}>
+              <TableCell style={{color: "white", textAlign: "center", fontSize: "1.2rem" }}>
                 Productos
               </TableCell>
-              <TableCell style={{ textAlign: "center", fontSize: "1.2rem" }}>
+              <TableCell style={{ color: "white", textAlign: "center", fontSize: "1.2rem" }}>
                 Moneda
               </TableCell>
-              <TableCell style={{ textAlign: "center", fontSize: "1.2rem" }}>
+              <TableCell style={{color: "white", textAlign: "center", fontSize: "1.2rem" }}>
                 Total
               </TableCell>
-              <TableCell style={{ textAlign: "center", fontSize: "1.2rem" }}>
+              <TableCell style={{ color: "white", textAlign: "center", fontSize: "1.2rem" }}>
                 PDF
               </TableCell>
             </TableHead>

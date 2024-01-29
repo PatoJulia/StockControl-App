@@ -44,7 +44,7 @@ export default function ProductModal({
 
   return (
     <Dialog open={isModalOpen} onClose={closeCallback}>
-      <DialogTitle>New Product</DialogTitle>
+      <DialogTitle>New Client</DialogTitle>
       <DialogContent>
         <form>
           <TextField
