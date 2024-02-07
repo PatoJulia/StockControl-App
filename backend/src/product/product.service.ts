@@ -41,6 +41,24 @@ export class ProductService {
       .exec();
   }
 
+  async sellProduct(product: Product, quantity: number) {
+    try {
+      if (product.stock - quantity < 0) {
+        throw new Error(
+          'Quantity selected for selling product is higher than current stock',
+        );
+      } else {
+        product.stock -= quantity;
+        await this.productModel.updateOne(
+          { _id: id },
+          { stock: product.stock },
+        );
+      }
+    } catch (error) {
+      console.error('Error selling product:', error);
+    }
+  }
+
   remove(id: string) {
     return this.productModel.findByIdAndDelete(id).exec();
   }

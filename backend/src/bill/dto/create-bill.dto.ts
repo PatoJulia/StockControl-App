@@ -34,5 +34,5 @@ export class CreateBillDto {
   clientName: string;
 
   @IsNotEmpty()
-  productListNames: string[];
+  products: { name: string; quantity: number }[];
 }

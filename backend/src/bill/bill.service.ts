@@ -6,6 +6,7 @@ import { Bill } from './schema/bill.schema';
 import { Client } from 'src/client/schema/client.schema';
 import { Currency } from 'src/currency/schema/currency.schema';
 import { Product } from 'src/product/schema/product.schema';
+import { ProductService } from 'src/product/product.service';
 const PDFDocument = require('pdfkit-table');
 
 @Injectable()
@@ -14,7 +15,8 @@ export class BillService {
     @InjectModel(Bill.name) private billModel: Model<Bill>,
     @InjectModel(Client.name) private clientModel: Model<Client>,
     @InjectModel(Currency.name) private currencyModel: Model<Currency>,
-    @InjectModel(Product.name) private producttModel: Model<Product>,
+    @InjectModel(Product.name) private productModel: Model<Product>,
+    private productService: ProductService,
   ) {}
   async create(createBillDto: CreateBillDto) {
     const client = await this.clientModel.findOne({
@@ -24,9 +26,14 @@ export class BillService {
     const currency = await this.currencyModel.findOne({
       code: createBillDto.currencyCode,
     });*/
-    const productList = await this.producttModel.find({
-      name: { $in: createBillDto.productListNames },
-    });
+    for (const product of createBillDto.products) {
+      const foundProduct: Product = await this.productModel.findOne({
+        name: product.name
+      });
+
+        this.productService.sellProduct(foundProduct, product.quantity),
+      
+    }
 
     return this.billModel
       .create({

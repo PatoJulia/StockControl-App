@@ -3,16 +3,14 @@ import { BillService } from './bill.service';
 import { BillController } from './bill.controller';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Bill, BillSchema } from './schema/bill.schema';
-import { ClientModule } from 'src/client/client.module';
-import { ProductModule } from 'src/product/product.module';
-import { CurrencyModule } from 'src/currency/currency.module';
 import { Client, ClientSchema } from 'src/client/schema/client.schema';
 import { Product, ProductSchema } from 'src/product/schema/product.schema';
 import { Currency, CurrencySchema } from 'src/currency/schema/currency.schema';
+import { ProductService } from 'src/product/product.service';
 
 @Module({
   controllers: [BillController],
-  providers: [BillService],
+  providers: [BillService, ProductService],
   imports: [
     MongooseModule.forFeature([
       { name: Bill.name, schema: BillSchema },
