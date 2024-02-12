@@ -7,6 +7,7 @@ export type ProductDocument = HydratedDocument<Product>;
 
 @Schema({ timestamps: true })
 export class Product {
+  _id: string;
   @Prop()
   name: string;
 

@@ -28,7 +28,7 @@ export class Bill {
   client: Client;
 
   @Prop({ type: mongoose.Schema.Types.Array, ref: 'Product' })
-  productList: Product[];
+  products: Product[];
 }
 
 export const BillSchema = SchemaFactory.createForClass(Bill);

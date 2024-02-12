@@ -26,35 +26,36 @@ export class BillService {
     const currency = await this.currencyModel.findOne({
       code: createBillDto.currencyCode,
     });*/
+    const foundProducts = [];
     for (const product of createBillDto.products) {
       const foundProduct: Product = await this.productModel.findOne({
-        name: product.name
+        name: product.name,
       });
+      foundProducts.push(foundProduct);
 
-        this.productService.sellProduct(foundProduct, product.quantity),
-      
+      this.productService.sellProduct(foundProduct, product.quantity);
     }
 
     return this.billModel
       .create({
         ...createBillDto,
         client: client._id, // Assuming client has an '_id' field
-        productList: productList.map((product) => product._id), // Assuming productList has an '_id' field
+        products: foundProducts.map((product) => product._id), // Assuming products has an '_id' field
       })
-      .then((bill) => bill.populate(['currency', 'client', 'productList']));
+      .then((bill) => bill.populate(['currency', 'client', 'products']));
   }
 
   findAll() {
     return this.billModel
       .find()
-      .populate(['currency', 'client', 'productList'])
+      .populate(['currency', 'client', 'products'])
       .exec();
   }
 
   findOne(id: string) {
     return this.billModel
       .findById(id)
-      .populate(['currency', 'client', 'productList'])
+      .populate(['currency', 'client', 'products'])
       .exec();
   }
 
@@ -84,7 +85,7 @@ export class BillService {
       );
       doc.text('Client information:_' + JSON.stringify(bill.client));
       doc.text('Currency information:_' + JSON.stringify(bill.currency));
-      doc.text('Product List:_' + JSON.stringify(bill.productList));
+      doc.text('Product List:_' + JSON.stringify(bill.products));
 
       const buffer = [];
       doc.on('data', buffer.push.bind(buffer));

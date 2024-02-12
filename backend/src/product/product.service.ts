@@ -50,7 +50,7 @@ export class ProductService {
       } else {
         product.stock -= quantity;
         await this.productModel.updateOne(
-          { _id: id },
+          { _id: product._id },
           { stock: product.stock },
         );
       }

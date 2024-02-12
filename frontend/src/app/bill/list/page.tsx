@@ -46,7 +46,13 @@ export default function ProductList() {
   useEffect(() => console.log(bills), [bills]);
   return (
     <>
-      <Typography textAlign={"center"} fontWeight={"bold"} fontSize={"2rem"} fontFamily={"Bitter"} fontStyle={"italic"}>
+      <Typography
+        textAlign={"center"}
+        fontWeight={"bold"}
+        fontSize={"2rem"}
+        fontFamily={"Bitter"}
+        fontStyle={"italic"}
+      >
         Remitos
       </Typography>
       <Grid container justifyContent={"space-evenly"} my={5}>
@@ -80,22 +86,58 @@ export default function ProductList() {
         <Grid item xs={12}>
           <Table>
             <TableHead style={{ backgroundColor: "#000000" }}>
-              <TableCell style={{  color: "white", textAlign: "center", fontSize: "1.2rem" }}>
+              <TableCell
+                style={{
+                  color: "white",
+                  textAlign: "center",
+                  fontSize: "1.2rem",
+                }}
+              >
                 Fecha
               </TableCell>
-              <TableCell style={{ color: "white", textAlign: "center", fontSize: "1.2rem" }}>
+              <TableCell
+                style={{
+                  color: "white",
+                  textAlign: "center",
+                  fontSize: "1.2rem",
+                }}
+              >
                 Cliente
               </TableCell>
-              <TableCell style={{color: "white", textAlign: "center", fontSize: "1.2rem" }}>
+              <TableCell
+                style={{
+                  color: "white",
+                  textAlign: "center",
+                  fontSize: "1.2rem",
+                }}
+              >
                 Productos
               </TableCell>
-              <TableCell style={{ color: "white", textAlign: "center", fontSize: "1.2rem" }}>
+              <TableCell
+                style={{
+                  color: "white",
+                  textAlign: "center",
+                  fontSize: "1.2rem",
+                }}
+              >
                 Moneda
               </TableCell>
-              <TableCell style={{color: "white", textAlign: "center", fontSize: "1.2rem" }}>
+              <TableCell
+                style={{
+                  color: "white",
+                  textAlign: "center",
+                  fontSize: "1.2rem",
+                }}
+              >
                 Total
               </TableCell>
-              <TableCell style={{ color: "white", textAlign: "center", fontSize: "1.2rem" }}>
+              <TableCell
+                style={{
+                  color: "white",
+                  textAlign: "center",
+                  fontSize: "1.2rem",
+                }}
+              >
                 PDF
               </TableCell>
             </TableHead>
@@ -110,7 +152,7 @@ export default function ProductList() {
                   </TableCell>
                   <TableCell align="center">{bill.client.name}</TableCell>
                   <TableCell>
-                    {bill.productList.map((product) => (
+                    {bill.products.map((product) => (
                       <Typography key={product.name} align="center">
                         {product.name}
                       </Typography>

@@ -20,5 +20,5 @@ export interface BillResponse {
   dateOfIssue: Date;
   //currency: Currency;
   client: Client;
-  productList: Product[];
+  products: Product[];
 }

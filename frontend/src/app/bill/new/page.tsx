@@ -41,6 +41,12 @@ export default function NewBill() {
         productListNames: filteredSelectedProducts.map(
           (product) => product.name
         ),
+        products: filteredSelectedProducts.map(
+          (product: Product, index: number) => ({
+            name: product.name,
+            quantity: productQuantities[index],
+          })
+        ),
         description: description,
         discount: 0,
         total: filteredSelectedProducts.reduce(
@@ -132,9 +138,6 @@ export default function NewBill() {
             </Grid>
             <Grid item xs={12}>
               <Typography>{`Productos`}</Typography>
-            </Grid>
-            <Grid item xs={12}>
-              <Typography>{`Productos`}</Typography>
               {selectedProducts.map((selectedProduct, index) => (
                 <Box display={"flex"} key={index}>
                   <Select
@@ -145,7 +148,11 @@ export default function NewBill() {
                     }
                     style={{ width: "100%", marginBottom: 10 }}
                   >
-                    {/* ... (existing code) */}
+                    {products.map((product) => (
+                      <MenuItem key={product.name} value={product.name}>
+                        {product.name}
+                      </MenuItem>
+                    ))}
                   </Select>
                   <TextField
                     type="number"
