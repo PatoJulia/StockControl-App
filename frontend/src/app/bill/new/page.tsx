@@ -7,6 +7,7 @@ import { Button, MenuItem, Select, TextField } from "@mui/material";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
+import Link from "next/link";
 
 import { useEffect, useRef, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
@@ -201,11 +202,13 @@ export default function NewBill() {
               />
             </Grid>
           </Grid>
-          <input
-            type="submit"
-            onClick={() => handleSubmit()}
-            style={{ cursor: "pointer" }}
-          />
+          <Link href="/bill/list">
+            <input
+              type="submit"
+              onClick={() => handleSubmit()}
+              style={{ cursor: "pointer" }}
+            />
+          </Link>
         </Box>
       </div>
     </>

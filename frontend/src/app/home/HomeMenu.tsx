@@ -5,6 +5,7 @@ import Product from "@/interfaces/Product";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
+import { Overlock } from "next/font/google";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -48,7 +49,8 @@ export default function HomeMenu() {
         padding: "20px",
       }}
     >
-      <Box sx={{ marginTop: 2.5 }}>
+      <Box sx={{ marginTop: 2.5 }} flexWrap={"wrap"}
+>
         <Box display={"flex"} justifyContent={"center"}>
           <Typography variant="h4" style={ {fontFamily:"Bitter", fontStyle:"italic"}}>Control de Stock</Typography>
         </Box>
@@ -60,9 +62,12 @@ export default function HomeMenu() {
           mt={5}
           display={"flex"}
           justifyContent={"center"}
-        >
+          flexWrap={"wrap"}
+          alignItems="center"
+
+          >
           {products.splice(0, 4).map((product) => (
-            <Grid item xs={5} key={product._id}>
+            <Grid item xs={5} key={product._id}style={{ border: "1.2px solid black" }}>
               <ProductCard product={product} />
             </Grid>
           ))}
@@ -74,10 +79,9 @@ export default function HomeMenu() {
           marginTop={10}
           justifyContent="center"
           alignItems="center"
-          wrap="wrap"
-        >
+          >
           {LINKS.map((link) => (
-            <Grid item xs={3} key={link.name}>
+            <Grid item xs={3} key={link.name} style={{ marginBottom: "10px", wordWrap: "break-word"}} >
               <Link href={link.href}>
                 <HomeCard title={link.name} />
               </Link>
