@@ -182,7 +182,7 @@ export default function ProductList() {
             </Grid>
           ) : (
             products.map((product, index) => (
-              <Grid key={product.name + index} item xs={3}>
+              <Grid key={product.name + index} item xs={3} style={{wordWrap:"break-word"}}>
                 <ProductCard product={product} />
               </Grid>
             ))

@@ -18,7 +18,7 @@ export default function ProductModal({
   closeCallback: () => void;
 }) {
   const [productName, setProductName] = useState<string>("");
-  const [productPrice, setProductPrice] = useState<number>();
+  const [productPrice, setProductPrice] = useState<number>(0);
   const [productBrand, setProductBrand] = useState<string>("");
   const [productDescription, setProductDescription] = useState<string>("");
   const [productStock, setProductStock] = useState<number>(0);
@@ -47,7 +47,7 @@ export default function ProductModal({
 
   return (
     <Dialog open={isModalOpen} onClose={closeCallback}>
-      <DialogTitle>New Product</DialogTitle>
+      <DialogTitle style={{backgroundColor: '#000000', color: '#ffffff'}}>New Product</DialogTitle>
       <DialogContent>
         <form>
           <TextField
@@ -84,15 +84,15 @@ export default function ProductModal({
             value={productBrand}
             onChange={(e) => setProductBrand(e.target.value)}
           />
-             <label>Price</label>
-
-            <input
+          
+          <label>Price:</label>
+            <input style={{marginLeft:"9px"}}
               type="number"
               value={productPrice}
               onChange={(e) => setProductPrice(e.target.valueAsNumber)}
-            />
-          <label>Stock</label>
-          <input
+            />       
+          <label>Stock:</label>
+          <input style={{marginLeft:"9px"}}
             type="number"
             value={productStock}
             onChange={(e) => setProductStock(e.target.valueAsNumber)}
@@ -103,6 +103,7 @@ export default function ProductModal({
             variant="contained"
             color="primary"
             onClick={handleFormSubmit}
+            style={{ backgroundColor: '#000000', color: '#ffffff',  marginTop: '10px'}}
           >
             Add Product
           </Button>

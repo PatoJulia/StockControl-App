@@ -24,6 +24,7 @@ import ProductModal from "@/components/ProductModal";
 import Client from "@/interfaces/Client";
 import NewClientModal from "@/components/NewClientModal";
 
+
 export default function ClientList() {
   const [clients, setClients] = useState<Client[]>([]);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -151,6 +152,12 @@ export default function ClientList() {
                     <TableCell align="right">{client.address}</TableCell>
                     <TableCell align="right">{client.phone}</TableCell>
                     <TableCell align="right">{client.email}</TableCell>
+                    <TableCell align="left">
+                        <Box display={"flex"} justifyContent={"center"}>
+                          <Link href={"/bill"}>Bill link</Link>
+                        </Box>
+                      </TableCell>
+                    
                   </TableRow>
                 ))}
               </TableBody>

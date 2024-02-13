@@ -20,7 +20,7 @@ export default function ProductModal({
 }) {
   const [clientName, setClientName] = useState<string>("");
   const [clientAddress, setClientAddress] = useState<string>("");
-  const [clientPhone, setClientPhone] = useState<number>();
+  const [clientPhone, setClientPhone] = useState<number>(0);
   const [clientEmail, setClientEmail] = useState<string>("");
 
   const handleFormSubmit = async () => {
@@ -44,7 +44,7 @@ export default function ProductModal({
 
   return (
     <Dialog open={isModalOpen} onClose={closeCallback}>
-      <DialogTitle>New Client</DialogTitle>
+      <DialogTitle style={{backgroundColor: '#000000', color: '#ffffff'}}>New Client</DialogTitle>
       <DialogContent>
         <form>
           <TextField
@@ -71,20 +71,25 @@ export default function ProductModal({
             value={clientAddress}
             onChange={(e) => setClientAddress(e.target.value)}
           />
-
-          {/* Product Price */}
-          <label>Número de teléfono</label>
-
-          <input
+          
+          <label>Número de teléfono:</label>
+          <input style={{margin:"9px"}}
             type="number"
             value={clientPhone}
             onChange={(e) => setClientPhone(e.target.valueAsNumber)}
           />
 
           {/* Submit Button */}
-          <Button onClick={handleFormSubmit} sx={{ color: "black" }}>
-            Agregar cliente
+          <div>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={handleFormSubmit}
+            style={{ backgroundColor: '#000000', color: '#ffffff',  marginTop: '10px'}}
+          >
+            Add Client
           </Button>
+          </div>
         </form>
       </DialogContent>
     </Dialog>
