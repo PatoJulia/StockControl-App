@@ -1,8 +1,10 @@
-"scripts": {
-  "start": "npm run start:frontend && npm run start:backend",
-  "start:frontend": "cd frontend && npm run dev",
-  "start:backend": "cd backend && npm run start",
-  "build": "npm run build:frontend && npm run build:backend",
-  "build:frontend": "cd frontend && npm run build",
-  "build:backend": "cd backend && npm run build"
+{
+  "scripts": {
+    "start": "npm run start:frontend && npm run start:backend",
+    "start:frontend": "cd frontend && npm run dev",
+    "start:backend": "cd backend && npm run start",
+    "build": "npm run build:frontend && npm run build:backend",
+    "build:frontend": "cd frontend && npm run build",
+    "build:backend": "cd backend && npm run build"
+  }
 }
