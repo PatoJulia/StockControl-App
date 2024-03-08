@@ -88,7 +88,7 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
           <form onSubmit={handleSubmit(onSubmit)} style={{display:"flex", justifyContent:"center", flexDirection:"column" }}>
             <Box mb={4}>
               <Typography variant="h4" gutterBottom sx={{ fontSize: "2rem", textAlign:"center", fontFamily:"Bitter", fontStyle:"italic"}}>
-              Nueva Factura
+              
               </Typography>
 
             </Box>
