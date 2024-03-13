@@ -20,11 +20,13 @@ import {
 import Link from "next/link";
 import { get } from "http";
 import ProductModal from "@/components/ProductModal";
+import ProductModalId from "@/components/productModalId";
 
 export default function ProductList() {
   const [tableView, setTableView] = useState<boolean>(false);
   const [products, setProducts] = useState<Product[]>([]);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [isEditModalIdOpen, setIsEditModalIdOpen] = useState<boolean>(false); 
 
   const toggleTableView = () => {
     setTableView(!tableView);
@@ -60,10 +62,8 @@ export default function ProductList() {
     <>
       <Box
         sx={{
-          //background: "linearF-gradient(to bottom, #7FC7D9, #B2FAFA)",
-          //background: "lineaFr-gradient(to bottom, #F9E8D9, #FFE382)",
-          padding: "20px", // Ajusta el espaciado interno según sea necesario
-          fontFamily: "fantasy", // Cambia la fuente según tus preferencias
+          padding: "20px", 
+          fontFamily: "fantasy", 
         }}
       >
         <Typography
@@ -193,6 +193,9 @@ export default function ProductList() {
           closeCallback={handleCloseModal}
           isModalOpen={isModalOpen}
         />
+        <ProductModalId
+          closeCallback={handleCloseModalId}
+          isModalIdOpen={isModalIdOpen}/>
       </Box>
     </>
   );

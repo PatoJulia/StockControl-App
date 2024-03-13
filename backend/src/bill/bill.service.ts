@@ -76,6 +76,29 @@ export class BillService {
         size: 'A4',
         bufferPages: true,
       });
+      let pageNumber = 0;
+      doc.on('pageAdded', () => {
+        pageNumber++;
+  
+        if (pageNumber > 1) {
+          doc.text('encabezado de pagina');
+        }
+        
+        const bottom = doc.page.margings.bottom;
+
+        doc.page.margins.bottom = 0;
+        doc.font('Helvetica').fontSize(14);
+        doc.text(
+          'Pág. ' + pageNumber,
+          0.5 * (doc.page.width - 100),
+          doc.page.height - 50,
+          {
+            width: 100,
+            align: 'center',
+            lineBreak: false,
+          })
+        doc.page.margins.bottom = bottom;
+      })
 
       doc.text('PDF generated in the server');
       doc.moveDown();
@@ -86,6 +109,31 @@ export class BillService {
       doc.text('Client information:_' + JSON.stringify(bill.client));
       doc.text('Currency information:_' + JSON.stringify(bill.currency));
       doc.text('Product List:_' + JSON.stringify(bill.products));
+      
+      const row_Bills = [];
+
+      bill.forEach((element) => {
+        const tempList = [element.descripcion, element.discount, element.total]
+        row_Bills.push(tempList);
+      });
+      doc.addPage();
+      const table = {
+        title: 'Tabla ejemplo',
+        subtitle: 'Esta es una tabla de ejemplo',
+        headers: [
+          //'codigo',
+          //'cantidad',
+          'descripcion',
+          //'unidades',
+          'dec',
+          'total'
+        ],
+        rows:row_Bills,
+      };
+
+      doc.table(table, {
+        columnsSize: [150, 350, 100],
+      });
 
       const buffer = [];
       doc.on('data', buffer.push.bind(buffer));
