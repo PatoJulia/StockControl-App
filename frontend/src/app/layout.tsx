@@ -21,7 +21,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Providers>
-          <AuthComponent Component={children} />
+          <AuthComponent component={children} />
         </Providers>
       </body>
     </html>
