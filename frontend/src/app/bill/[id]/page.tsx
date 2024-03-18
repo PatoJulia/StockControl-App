@@ -1,4 +1,5 @@
 "use client";
+import { Bill } from "@/interfaces/Bill";
 import { useRef, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
@@ -15,5 +16,5 @@ export default function RegisterBill({ params }: { params: { id: string } }) {
   const { register, handleSubmit } = useForm<FormValues>();
   const [isEditMode, setIsEditMode] = useState<boolean>(false);
 
-  const onSubmit: SubmitHandler<FormValues> = (data) => handleSendRequest(data);
+  //const onSubmit: SubmitHandler<FormValues> = (data) => handleSendRequest(data);
 }
