@@ -10,7 +10,7 @@ const handler = NextAuth({
   ],
   callbacks: {
     async signIn({ user, account, profile, email, credentials }) {
-      const whitelist = process.env.WHTIELIST || [""];
+      const whitelist = process.env.WHITELIST || [""];
       const isAllowedToSignin = whitelist.includes(user.email!);
       if (isAllowedToSignin) {
         return true;
