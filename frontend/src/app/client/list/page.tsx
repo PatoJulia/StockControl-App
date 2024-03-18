@@ -24,7 +24,6 @@ import ProductModal from "@/components/ProductModal";
 import Client from "@/interfaces/Client";
 import NewClientModal from "@/components/NewClientModal";
 
-
 export default function ClientList() {
   const [clients, setClients] = useState<Client[]>([]);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -44,7 +43,7 @@ export default function ClientList() {
   useEffect(() => {
     const fetchClients = async () => {
       try {
-        const response = await fetch("http://localhost:4300/client");
+        const response = await fetch(`${process.env.BASE_URL}/client`);
         const data = await response.json();
         setClients(data);
       } catch (error) {
@@ -64,7 +63,13 @@ export default function ClientList() {
           fontFamily: "Bitter",
         }}
       >
-        <Typography textAlign={"center"} fontWeight={"bold"} fontSize={"2rem"}fontFamily={"Bitter"} fontStyle={"italic"}>
+        <Typography
+          textAlign={"center"}
+          fontWeight={"bold"}
+          fontSize={"2rem"}
+          fontFamily={"Bitter"}
+          fontStyle={"italic"}
+        >
           Clientes
         </Typography>
         <Grid container justifyContent={"space-evenly"} my={5}>
@@ -153,11 +158,10 @@ export default function ClientList() {
                     <TableCell align="right">{client.phone}</TableCell>
                     <TableCell align="right">{client.email}</TableCell>
                     <TableCell align="left">
-                        <Box display={"flex"} justifyContent={"center"}>
-                          <Link href={"/bill"}>Bill link</Link>
-                        </Box>
-                      </TableCell>
-                    
+                      <Box display={"flex"} justifyContent={"center"}>
+                        <Link href={"/bill"}>Bill link</Link>
+                      </Box>
+                    </TableCell>
                   </TableRow>
                 ))}
               </TableBody>

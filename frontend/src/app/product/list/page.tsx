@@ -45,7 +45,7 @@ export default function ProductList() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch("http://localhost:4300/product");
+        const response = await fetch(`${process.env.BASE_URL}/product`);
         const data = await response.json();
         setProducts(data);
       } catch (error) {
@@ -182,7 +182,12 @@ export default function ProductList() {
             </Grid>
           ) : (
             products.map((product, index) => (
-              <Grid key={product.name + index} item xs={3} style={{wordWrap:"break-word"}}>
+              <Grid
+                key={product.name + index}
+                item
+                xs={3}
+                style={{ wordWrap: "break-word" }}
+              >
                 <ProductCard product={product} />
               </Grid>
             ))

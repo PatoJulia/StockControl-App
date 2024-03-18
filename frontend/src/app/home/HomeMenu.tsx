@@ -27,7 +27,7 @@ export default function HomeMenu() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch("http://localhost:4300/product");
+        const response = await fetch(`${process.env.BASE_URL}/product`);
         const data = await response.json();
         setProducts(data);
       } catch (error) {
@@ -44,15 +44,19 @@ export default function HomeMenu() {
         marginTop: 2.5,
         //background: "linear-gradient(to bottom, #97CEEB, #FFA5F0 )",
         //background: "linear-gradient(to bottom, #7FC7D9, #ffffff)",
-        //background: "linear-gradient(to bottom, #D2E3C8, #D2E3C8)",      
+        //background: "linear-gradient(to bottom, #D2E3C8, #D2E3C8)",
         minHeight: "100vh",
         padding: "20px",
       }}
     >
-      <Box sx={{ marginTop: 2.5 }} flexWrap={"wrap"}
->
+      <Box sx={{ marginTop: 2.5 }} flexWrap={"wrap"}>
         <Box display={"flex"} justifyContent={"center"}>
-          <Typography variant="h4" style={ {fontFamily:"Bitter", fontStyle:"italic"}}>Control de Stock</Typography>
+          <Typography
+            variant="h4"
+            style={{ fontFamily: "Bitter", fontStyle: "italic" }}
+          >
+            Control de Stock
+          </Typography>
         </Box>
 
         <Grid
@@ -64,10 +68,14 @@ export default function HomeMenu() {
           justifyContent={"center"}
           flexWrap={"wrap"}
           alignItems="center"
-
-          >
+        >
           {products.splice(0, 4).map((product) => (
-            <Grid item xs={5} key={product._id}style={{ border: "1.2px solid black" }}>
+            <Grid
+              item
+              xs={5}
+              key={product._id}
+              style={{ border: "1.2px solid black" }}
+            >
               <ProductCard product={product} />
             </Grid>
           ))}
@@ -79,9 +87,14 @@ export default function HomeMenu() {
           marginTop={10}
           justifyContent="center"
           alignItems="center"
-          >
+        >
           {LINKS.map((link) => (
-            <Grid item xs={3} key={link.name} style={{ marginBottom: "10px", wordWrap: "break-word"}} >
+            <Grid
+              item
+              xs={3}
+              key={link.name}
+              style={{ marginBottom: "10px", wordWrap: "break-word" }}
+            >
               <Link href={link.href}>
                 <HomeCard title={link.name} />
               </Link>

@@ -31,7 +31,7 @@ export default function ProductList() {
   useEffect(() => {
     const fetchBills = async () => {
       try {
-        const response = await fetch("http://localhost:4300/bill");
+        const response = await fetch(`${process.env.BASE_URL}/bill`);
         const data = await response.json();
         console.log(data);
         setBills(data);

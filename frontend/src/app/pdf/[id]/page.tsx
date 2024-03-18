@@ -8,7 +8,7 @@ export default function BillPDF({ params }: { params: { id: string } }) {
     const fetchProducts = async () => {
       try {
         const response = await fetch(
-          `http://localhost:4300/bill/${params.id}/pdf`
+          `${process.env.BASE_URL}/bill/${params.id}/pdf`
         );
         const data = await response.arrayBuffer();
         setPDF(data);
