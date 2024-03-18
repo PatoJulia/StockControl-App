@@ -34,7 +34,7 @@ export default function ProductModal({
       productCode: productCode,
     };
     try {
-      const response = await fetch("http://localhost:4300/product", {
+      const response = await fetch(`${process.env.BASE_URL}/product`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
@@ -47,7 +47,9 @@ export default function ProductModal({
 
   return (
     <Dialog open={isModalOpen} onClose={closeCallback}>
-      <DialogTitle style={{backgroundColor: '#000000', color: '#ffffff'}}>New Product</DialogTitle>
+      <DialogTitle style={{ backgroundColor: "#000000", color: "#ffffff" }}>
+        New Product
+      </DialogTitle>
       <DialogContent>
         <form>
           <TextField
@@ -84,15 +86,17 @@ export default function ProductModal({
             value={productBrand}
             onChange={(e) => setProductBrand(e.target.value)}
           />
-          
+
           <label>Price:</label>
-            <input style={{marginLeft:"9px"}}
-              type="number"
-              value={productPrice}
-              onChange={(e) => setProductPrice(e.target.valueAsNumber)}
-            />       
+          <input
+            style={{ marginLeft: "9px" }}
+            type="number"
+            value={productPrice}
+            onChange={(e) => setProductPrice(e.target.valueAsNumber)}
+          />
           <label>Stock:</label>
-          <input style={{marginLeft:"9px"}}
+          <input
+            style={{ marginLeft: "9px" }}
             type="number"
             value={productStock}
             onChange={(e) => setProductStock(e.target.valueAsNumber)}
@@ -103,7 +107,11 @@ export default function ProductModal({
             variant="contained"
             color="primary"
             onClick={handleFormSubmit}
-            style={{ backgroundColor: '#000000', color: '#ffffff',  marginTop: '10px'}}
+            style={{
+              backgroundColor: "#000000",
+              color: "#ffffff",
+              marginTop: "10px",
+            }}
           >
             Add Product
           </Button>

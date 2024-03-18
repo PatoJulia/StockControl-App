@@ -28,7 +28,7 @@ export default function ClientDetail({ params }: { params: { id: string } }) {
   const handleSendRequest = async (data: FormValues) => {
     try {
       const response = await fetch(
-        `http://localHost:4300/client/${client?._id}`,
+        `${process.env.BASE_URL}/client/${client?._id}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
@@ -44,7 +44,7 @@ export default function ClientDetail({ params }: { params: { id: string } }) {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `http://localhost:4300/client/${params.id}`,
+          `${process.env.BASE_URL}/client/${params.id}`,
           {
             method: "GET",
             headers: { "Content-Type": "application/json" },
@@ -70,69 +70,103 @@ export default function ClientDetail({ params }: { params: { id: string } }) {
   };
   return (
     <>
-      <Box     
+      <Box
         display="flex"
         justifyContent="center"
         alignItems="center"
         height={"100vh"}
         width={"100vw"}
         sx={{
-        background: "linear-gradient(to bottom, #d0f0f0, #e9e9ef)",
-        }}>
-        <form onSubmit={handleSubmit(onSubmit)} style={{display:"flex", justifyContent:"center", flexDirection:"column" }} >
+          background: "linear-gradient(to bottom, #d0f0f0, #e9e9ef)",
+        }}
+      >
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            flexDirection: "column",
+          }}
+        >
           <Box mb={4}>
-            <Typography variant="h4" gutterBottom sx={{ fontSize: "2rem", textAlign:"center", fontFamily:"fantasy", fontStyle:"italic"}}>
+            <Typography
+              variant="h4"
+              gutterBottom
+              sx={{
+                fontSize: "2rem",
+                textAlign: "center",
+                fontFamily: "fantasy",
+                fontStyle: "italic",
+              }}
+            >
               Nuevo cliente
             </Typography>
           </Box>
-            <Box sx={{marginY: 3}}>
-              <Typography sx={{ fontSize: "1.5rem", fontFamily:"fantasy", fontStyle:"initial" }}>{`Código`}</Typography>
-              <input
-                type="text"
-                {...register("_id")}
-                style={{ fontSize: "1.2rem", padding: "0.5rem" }}
-              />
-            </Box>
-            <Box sx={{marginY: 3}}>
-              <Typography sx={{ fontSize: "1.5rem", fontFamily:"fantasy" }}>{"Nombre"}</Typography>
-              <input
-                type="text"
-                {...register("name")}
-                style={{ fontSize: "1.2rem", padding: "0.5rem" }}
-              />
-            </Box>
-            <Box sx={{marginY: 3}}>
-              <Typography sx={{ fontSize: "1.5rem", fontFamily:"fantasy" }}>{"Dirección"}</Typography>
-              <input
-                type="text"
-                {...register("addres")}
-                style={{ fontSize: "1.2rem", padding: "0.5rem" }}
-              />
-            </Box>
-            <Box sx={{marginY: 3}}>
-              <Typography sx={{ fontSize: "1.5rem", fontFamily:"fantasy" }}>{"Teléfono"}</Typography>
-              <input
-                type="number"
-                {...register("phone")}
-                style={{ fontSize: "1.2rem", padding: "0.5rem" }}
-              />
-            </Box>
-            <Box sx={{marginY: 3}}>
-              <Typography sx={{ fontSize: "1.5rem", fontFamily:"fantasy" }}>{"Email"}</Typography>
-              <input
-                type="text"
-                {...register("e_mail")}
-                style={{ fontSize: "1.2rem", padding: "0.5rem" }}
-              />
-            </Box>
-            <Box sx={{display:"flex", marginY: 3, justifyContent:"center"}}>
-            <input type="submit"  style={{
+          <Box sx={{ marginY: 3 }}>
+            <Typography
+              sx={{
+                fontSize: "1.5rem",
+                fontFamily: "fantasy",
+                fontStyle: "initial",
+              }}
+            >{`Código`}</Typography>
+            <input
+              type="text"
+              {...register("_id")}
+              style={{ fontSize: "1.2rem", padding: "0.5rem" }}
+            />
+          </Box>
+          <Box sx={{ marginY: 3 }}>
+            <Typography sx={{ fontSize: "1.5rem", fontFamily: "fantasy" }}>
+              {"Nombre"}
+            </Typography>
+            <input
+              type="text"
+              {...register("name")}
+              style={{ fontSize: "1.2rem", padding: "0.5rem" }}
+            />
+          </Box>
+          <Box sx={{ marginY: 3 }}>
+            <Typography sx={{ fontSize: "1.5rem", fontFamily: "fantasy" }}>
+              {"Dirección"}
+            </Typography>
+            <input
+              type="text"
+              {...register("addres")}
+              style={{ fontSize: "1.2rem", padding: "0.5rem" }}
+            />
+          </Box>
+          <Box sx={{ marginY: 3 }}>
+            <Typography sx={{ fontSize: "1.5rem", fontFamily: "fantasy" }}>
+              {"Teléfono"}
+            </Typography>
+            <input
+              type="number"
+              {...register("phone")}
+              style={{ fontSize: "1.2rem", padding: "0.5rem" }}
+            />
+          </Box>
+          <Box sx={{ marginY: 3 }}>
+            <Typography sx={{ fontSize: "1.5rem", fontFamily: "fantasy" }}>
+              {"Email"}
+            </Typography>
+            <input
+              type="text"
+              {...register("e_mail")}
+              style={{ fontSize: "1.2rem", padding: "0.5rem" }}
+            />
+          </Box>
+          <Box sx={{ display: "flex", marginY: 3, justifyContent: "center" }}>
+            <input
+              type="submit"
+              style={{
                 fontSize: "1.5rem",
                 padding: "0.5rem",
                 borderRadius: "10px",
-                border:"1px solid black",
-                textAlign:"center"
-              }} />
+                border: "1px solid black",
+                textAlign: "center",
+              }}
+            />
           </Box>
         </form>
       </Box>

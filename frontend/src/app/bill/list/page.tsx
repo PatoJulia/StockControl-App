@@ -31,7 +31,7 @@ export default function ProductList() {
   useEffect(() => {
     const fetchBills = async () => {
       try {
-        const response = await fetch("http://localhost:4300/bill");
+        const response = await fetch(`${process.env.BASE_URL}/bill`);
         const data = await response.json();
         console.log(data);
         setBills(data);
@@ -148,7 +148,7 @@ export default function ProductList() {
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <TableCell align="center" component="th" scope="row">
-                    {bill.dateOfIssue}
+                    {JSON.stringify(bill.dateOfIssue)}
                   </TableCell>
                   <TableCell align="center">{bill.client.name}</TableCell>
                   <TableCell>

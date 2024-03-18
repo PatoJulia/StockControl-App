@@ -31,7 +31,7 @@ export default function ProductModal({
       email: clientEmail,
     };
     try {
-      const response = await fetch("http://localhost:4300/client", {
+      const response = await fetch(`${process.env.BASE_URL}/client`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
@@ -44,7 +44,9 @@ export default function ProductModal({
 
   return (
     <Dialog open={isModalOpen} onClose={closeCallback}>
-      <DialogTitle style={{backgroundColor: '#000000', color: '#ffffff'}}>New Client</DialogTitle>
+      <DialogTitle style={{ backgroundColor: "#000000", color: "#ffffff" }}>
+        New Client
+      </DialogTitle>
       <DialogContent>
         <form>
           <TextField
@@ -71,9 +73,10 @@ export default function ProductModal({
             value={clientAddress}
             onChange={(e) => setClientAddress(e.target.value)}
           />
-          
+
           <label>Número de teléfono:</label>
-          <input style={{margin:"9px"}}
+          <input
+            style={{ margin: "9px" }}
             type="number"
             value={clientPhone}
             onChange={(e) => setClientPhone(e.target.valueAsNumber)}
@@ -81,14 +84,18 @@ export default function ProductModal({
 
           {/* Submit Button */}
           <div>
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={handleFormSubmit}
-            style={{ backgroundColor: '#000000', color: '#ffffff',  marginTop: '10px'}}
-          >
-            Add Client
-          </Button>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={handleFormSubmit}
+              style={{
+                backgroundColor: "#000000",
+                color: "#ffffff",
+                marginTop: "10px",
+              }}
+            >
+              Add Client
+            </Button>
           </div>
         </form>
       </DialogContent>

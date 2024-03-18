@@ -40,9 +40,9 @@ export default function NewBill() {
       const newBill: Bill = {
         clientName: selectedClient!.name,
         productListNames: filteredSelectedProducts.map(
-          (product) => product.name
+          (product) => (product as Product).name
         ),
-        products: filteredSelectedProducts.map(
+        products: (filteredSelectedProducts as Product[]).map(
           (product: Product, index: number) => ({
             name: product.name,
             quantity: productQuantities[index],
@@ -50,14 +50,14 @@ export default function NewBill() {
         ),
         description: description,
         discount: 0,
-        total: filteredSelectedProducts.reduce(
+        total: (filteredSelectedProducts as Product[]).reduce(
           (acc, product) => acc + product.price,
           0
         ),
         dateOfIssue: new Date(),
       };
 
-      const response = await fetch("http://localhost:4300/bill", {
+      const response = await fetch(`${process.env.BASE_URL}/bill`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newBill),
@@ -97,7 +97,7 @@ export default function NewBill() {
   useEffect(() => {
     const fetchClients = async () => {
       try {
-        const response = await fetch("http://localhost:4300/client");
+        const response = await fetch(`${process.env.BASE_URL}/client`);
         const data = await response.json();
         setClients(data);
       } catch (error) {
@@ -106,7 +106,7 @@ export default function NewBill() {
     };
     const fetchProducts = async () => {
       try {
-        const response = await fetch("http://localhost:4300/product");
+        const response = await fetch(`${process.env.BASE_URL}/product`);
         const data = await response.json();
         setProducts(data);
       } catch (error) {
@@ -143,7 +143,7 @@ export default function NewBill() {
                 <Box display={"flex"} key={index}>
                   <Select
                     key={index}
-                    value={selectedProduct.name || ""}
+                    value={(selectedProduct as Product).name || ""}
                     onChange={(e) =>
                       handleProductChange(index, e.target.value as string)
                     }

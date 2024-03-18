@@ -17,6 +17,7 @@ namespace Currency {
       EUR: 0.85,
       GBP: 0.73,
       JPY: 110.23,
+      ARG: 1,
     };
 
     const convertedAmount =

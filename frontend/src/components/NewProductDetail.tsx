@@ -27,7 +27,7 @@ export default function NewProductDetail() {
 
   const handleSendRequest = async (data: FormValues) => {
     try {
-      const response = await fetch("http://localhost:4300/product", {
+      const response = await fetch(`${process.env.BASE_URL}/product`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
