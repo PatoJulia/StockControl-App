@@ -148,7 +148,7 @@ export default function ProductList() {
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <TableCell align="center" component="th" scope="row">
-                    {bill.dateOfIssue}
+                    {JSON.stringify(bill.dateOfIssue)}
                   </TableCell>
                   <TableCell align="center">{bill.client.name}</TableCell>
                   <TableCell>
