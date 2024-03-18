@@ -40,9 +40,9 @@ export default function NewBill() {
       const newBill: Bill = {
         clientName: selectedClient!.name,
         productListNames: filteredSelectedProducts.map(
-          (product) => product.name
+          (product) => (product as Product).name
         ),
-        products: filteredSelectedProducts.map(
+        products: (filteredSelectedProducts as Product[]).map(
           (product: Product, index: number) => ({
             name: product.name,
             quantity: productQuantities[index],
@@ -50,7 +50,7 @@ export default function NewBill() {
         ),
         description: description,
         discount: 0,
-        total: filteredSelectedProducts.reduce(
+        total: (filteredSelectedProducts as Product[]).reduce(
           (acc, product) => acc + product.price,
           0
         ),
@@ -143,7 +143,7 @@ export default function NewBill() {
                 <Box display={"flex"} key={index}>
                   <Select
                     key={index}
-                    value={selectedProduct.name || ""}
+                    value={(selectedProduct as Product).name || ""}
                     onChange={(e) =>
                       handleProductChange(index, e.target.value as string)
                     }

@@ -10,6 +10,7 @@ export interface Bill {
   //currency: Currency;
   clientName: string;
   productListNames: string[];
+  products: { name: string; quantity: number }[];
 }
 
 export interface BillResponse {
