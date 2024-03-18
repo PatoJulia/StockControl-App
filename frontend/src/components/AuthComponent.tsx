@@ -2,6 +2,7 @@
 import { Box, Grid, Typography } from "@mui/material";
 import { useSession } from "next-auth/react";
 import Appbar from "./Appbar";
+import App from "next/app";
 
 interface AuthComponentProps {
   component: any;
@@ -10,6 +11,7 @@ interface AuthComponentProps {
 export default function AuthComponent(props: AuthComponentProps) {
   const session = useSession();
 
+  /*
   return session.status === "authenticated" ? (
     <>
       <Appbar />
@@ -34,6 +36,14 @@ export default function AuthComponent(props: AuthComponentProps) {
           <Appbar />
         </Grid>
       </Grid>
+    </>
+  );
+  */
+
+  return (
+    <>
+      <Appbar />
+      {props.component}
     </>
   );
 }
