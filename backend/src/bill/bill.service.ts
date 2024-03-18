@@ -112,10 +112,10 @@ export class BillService {
       
       const row_Bills = [];
 
-      bill.forEach((element) => {
+      /*bill.forEach((element) => {
         const tempList = [element.descripcion, element.discount, element.total]
         row_Bills.push(tempList);
-      });
+      });*/
       doc.addPage();
       const table = {
         title: 'Tabla ejemplo',

@@ -47,7 +47,7 @@ export default function ProductList() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch(`${process.env.BASE_URL}/product`);
+        const response = await fetch(`http://localhost:4300/product`);
         const data = await response.json();
         setProducts(data);
       } catch (error) {
@@ -198,9 +198,9 @@ export default function ProductList() {
           closeCallback={handleCloseModal}
           isModalOpen={isModalOpen}
         />
-        <ProductModalId
+       {/*} <ProductModalId
           closeCallback={handleCloseModalId}
-          isModalIdOpen={isModalIdOpen}/>
+            isModalIdOpen={isModalIdOpen}/>{*/}
       </Box>
     </>
   );
