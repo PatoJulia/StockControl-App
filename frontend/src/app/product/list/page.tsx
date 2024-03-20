@@ -26,7 +26,7 @@ export default function ProductList() {
   const [tableView, setTableView] = useState<boolean>(false);
   const [products, setProducts] = useState<Product[]>([]);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const [isEditModalIdOpen, setIsEditModalIdOpen] = useState<boolean>(false); 
+  const [isEditModalIdOpen, setIsEditModalIdOpen] = useState<boolean>(false);
 
   const toggleTableView = () => {
     setTableView(!tableView);
@@ -47,7 +47,7 @@ export default function ProductList() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch(`http://localhost:4300/product`);
+        const response = await fetch(`${process.env.BASE_URL}/product`);
         const data = await response.json();
         setProducts(data);
       } catch (error) {
@@ -62,8 +62,8 @@ export default function ProductList() {
     <>
       <Box
         sx={{
-          padding: "20px", 
-          fontFamily: "fantasy", 
+          padding: "20px",
+          fontFamily: "fantasy",
         }}
       >
         <Typography
@@ -198,7 +198,7 @@ export default function ProductList() {
           closeCallback={handleCloseModal}
           isModalOpen={isModalOpen}
         />
-       {/*} <ProductModalId
+        {/*} <ProductModalId
           closeCallback={handleCloseModalId}
             isModalIdOpen={isModalIdOpen}/>{*/}
       </Box>
